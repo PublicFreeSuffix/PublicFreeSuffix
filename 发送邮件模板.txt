@@ -1,0 +1,16 @@
+收件人：publicfreesuffix@gmail.com
+发件人：liangliangdamowang@gmail.com
+
+邮件主题：
+Registration: yucool.no.kg
+
+邮件内容：
+Domain Name: yucool.no.kg
+Pull Request URL: [您创建PR后的链接]
+
+---
+
+注意：
+1. 请先在GitHub上Fork仓库并创建Pull Request
+2. 将PR链接替换到邮件内容中的[您创建PR后的链接]
+3. 使用您的邮箱 liangliangdamowang@gmail.com 发送此邮件
