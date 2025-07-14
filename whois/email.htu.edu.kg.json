@@ -1,6 +1,6 @@
 {
     "registrant": "admin@astrarails.org",
-    "domain": "mail",
+    "domain": "email",
     "sld": "htu.edu.kg",
     "nameservers": [
       "ns61.cloudns.net",
