@@ -3,10 +3,8 @@
   "domain": "mails",
   "sld": "htu.edu.kg",
   "nameservers": [
-    "ns1.dnsExit.com",
-    "ns2.dnsExit.com",
-    "ns3.dnsExit.com",
-    "ns4.dnsExit.com"
+    "ns1.gcorelabs.net",
+    "ns2.gcdn.services"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
