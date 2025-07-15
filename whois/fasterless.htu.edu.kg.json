@@ -1,0 +1,16 @@
+{
+    "registrant": "supertrupman@gmail.com",
+    "domain": "fasterless",
+    "sld": "htu.edu.kg",
+    "nameservers": [
+      "ns1.dynu.com",
+      "ns2.dynu.com",
+      "ns3.dynu.com",
+      "ns4.dynu.com"
+    ],
+    "agree_to_agreements": {
+      "registration_and_use_agreement": true,
+      "acceptable_use_policy": true,
+      "privacy_policy": true
+    }
+  }
