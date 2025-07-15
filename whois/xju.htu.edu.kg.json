@@ -1,12 +1,10 @@
 {
-  "registrant": "qby140326@gmail.com",
-  "domain": "qby",
+  "registrant": "zoyopei@gmail.com",
+  "domain": "xju",
   "sld": "htu.edu.kg",
   "nameservers": [
-    "ns61.cloudns.net",
-    "ns63.cloudns.net",
-    "ns64.cloudns.uk",
-    "ns62.cloudns.com"
+    "gordon.ns.cloudflare.com",
+    "violet.ns.cloudflare.com"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,

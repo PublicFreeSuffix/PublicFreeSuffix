@@ -1,0 +1,14 @@
+{
+  "registrant": "cacikoooo@gmail.com",
+  "domain": "furina",
+  "sld": "no.kg",
+  "nameservers": [
+    "fns1.42.pl",
+    "fns2.42.pl"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}

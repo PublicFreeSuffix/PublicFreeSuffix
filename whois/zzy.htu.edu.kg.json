@@ -1,12 +1,12 @@
 {
-  "registrant": "qby140326@gmail.com",
-  "domain": "qby",
+  "registrant": "zivan.z@gmail.com",
+  "domain": "zzy",
   "sld": "htu.edu.kg",
   "nameservers": [
-    "ns61.cloudns.net",
-    "ns63.cloudns.net",
-    "ns64.cloudns.uk",
-    "ns62.cloudns.com"
+    "ns1.he.net",
+    "ns2.he.net",
+    "ns3.he.net",
+    "ns4.he.net"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
@@ -14,3 +14,4 @@
     "privacy_policy": true
   }
 }
+

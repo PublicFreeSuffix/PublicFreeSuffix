@@ -1,12 +1,12 @@
 {
-  "registrant": "qby140326@gmail.com",
-  "domain": "qby",
-  "sld": "htu.edu.kg",
+  "registrant": "sokgregistry@gmail.com",
+  "domain": "pr-autest",
+  "sld": "no.kg",
   "nameservers": [
     "ns61.cloudns.net",
+    "ns62.cloudns.com",
     "ns63.cloudns.net",
-    "ns64.cloudns.uk",
-    "ns62.cloudns.com"
+    "ns64.cloudns.uk"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
