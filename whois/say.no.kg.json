@@ -1,12 +1,12 @@
 {
-  "registrant": "zhoujj1115@gmail.com",
-  "domain": "yexi",
-  "sld": "htu.edu.kg",
+  "registrant": "leon2utral@gmail.com",
+  "domain": "say",
+  "sld": "no.kg",
   "nameservers": [
-    "ns1.desec.io",
-    "ns2.desec.org",
     "ns1.luadns.net",
-    "ns2.luadns.net"
+    "ns2.luadns.net",
+    "ns3.luadns.net",
+    "ns4.luadns.net"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
