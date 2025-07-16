@@ -1,10 +1,13 @@
 {
-  "registrant": "zhoujj1115@gmail.com",
-  "domain": "yexi",
+  "registrant": "looksimpler@icloud.com",
+  "domain": "lklkl",
   "sld": "htu.edu.kg",
   "nameservers": [
-    "ns1.desec.io",
-    "ns2.desec.org"
+    "fns1.42.pl",
+    "fns2.42.pl",
+    "ns1.topdn.net",
+    "ns2.topdn.net",
+    "ns3.topdn.net"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,

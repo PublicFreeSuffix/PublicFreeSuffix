@@ -124,6 +124,16 @@ class PRValidator {
           if (!consistencyValidation.isValid) {
             addError(consistencyValidation.error);
           }
+
+          // 7. Validate PR branch name
+          const branchNameValidation = await this.validateBranchName(
+            prData.branchName,
+            titleValidation.domainName,
+            titleValidation.sld
+          );
+          if (!branchNameValidation.isValid) {
+            addError(branchNameValidation.error);
+          }
         }
       }
 
@@ -161,6 +171,7 @@ class PRValidator {
     const prAuthor = process.env.PR_AUTHOR || '';
     const prFiles = JSON.parse(process.env.PR_FILES || '[]');
     const headSha = process.env.HEAD_SHA || '';
+    const branchName = process.env.PR_BRANCH || '';
 
     return {
       title: prTitle,
@@ -168,7 +179,8 @@ class PRValidator {
       number: prNumber,
       author: prAuthor,
       files: prFiles,
-      headSha: headSha
+      headSha: headSha,
+      branchName: branchName
     };
   }
 
@@ -615,6 +627,39 @@ class PRValidator {
   }
 
   /**
+   * Validate PR branch name format and consistency with domain
+   */
+  async validateBranchName(branchName, domainName, sld) {
+    const result = {
+      isValid: false,
+      error: null
+    };
+
+    if (!branchName || typeof branchName !== 'string') {
+      result.error = 'PR branch name cannot be empty.';
+      return result;
+    }
+
+    // 1. Prohibit merging from 'main' branch
+    if (branchName === 'main') {
+      result.error = 'Merging from the \'main\' branch is not allowed. Please use a feature branch.';
+      return result;
+    }
+
+    // 2. Validate branch name pattern: {domain.sld}-request-[0-9+]
+    const expectedDomainSld = `${domainName}.${sld}`;
+    const branchNameRegex = new RegExp(`^${expectedDomainSld}-request-[0-9]+$`);
+
+    if (!branchNameRegex.test(branchName)) {
+      result.error = `PR branch name format is incorrect. Expected format: \`${expectedDomainSld}-request-{PR_NUMBER}\`. Current branch name: \`${branchName}\`.`;
+      return result;
+    }
+
+    result.isValid = true;
+    return result;
+  }
+
+  /**
    * Get file content
    */
   async getFileContent(file, prData) {
@@ -770,7 +815,11 @@ ${mentionUser ? `@${mentionUser} ` : ''}**The following issues were found:**
       });
     }
 
-    report += `\n**Need help?** Please refer to the [README](${config.github.readmeUrl}).`;
+    // 统一友好提示，避免重复输出
+    const readmeTip = `\n\n📖 **Need help?** Please refer to the [README](${config.github.readmeUrl}) for detailed PR submission guidance and examples. If you are a new user, this will help you complete your operation smoothly! 💡`;
+    if (!report.includes('README')) {
+      report += readmeTip;
+    }
 
     return report;
   }
@@ -801,18 +850,18 @@ Remove: example.no.kg
       });
     }
 
-    if (errorTypes.descriptionLength) {
+    if (errorTypes.description) {
       helpSections.push({
         title: "Complete PR Description",
-        content: `The PR description must be filled out completely according to the template, requiring at least 1300 characters.
+        content: `The PR description must be filled out completely according to the template.
 
 **Solutions:**
-1. Use the provided PR template
-2. Complete all confirmation items (including all checkboxes)
-3. Provide detailed operation instructions and contact information
-4. Confirm all agreement terms
+1. Please use the provided PR template to create your PR description.
+2. Ensure all confirmation items are completed, including all checkboxes.
+3. Provide detailed operation instructions and contact information.
+4. Confirm all agreement terms.
 
-**Template link:** [PR Request Template](https://github.com/PublicFreeSuffix/PublicFreeSuffix/blob/main/.github/pull_request_template.md)`
+**Template link:** [PR Request Template](${config.github.prTemplateUrl})`
       });
     }
 
@@ -822,9 +871,9 @@ Remove: example.no.kg
         content: `Each PR can only contain 1 file change.
 
 **Solutions:**
-- If you need to handle multiple domains, create separate PRs
-- Check if other files were accidentally included
-- Ensure only the target JSON file was modified`
+- If you need to handle multiple domains, please create separate PRs.
+- Check if other files were accidentally included.
+- Ensure only the target JSON file was modified.`
       });
     }
 
@@ -840,41 +889,143 @@ whois/mycompany.so.kg.json
 \`\`\`
 
 **File naming rules:**
-- Filename must exactly match the domain name
-- Must have \`.json\` extension
-- Must be located in the \`whois/\` directory`
+- Filename must exactly match the domain name.
+- Must have a \`.json\` extension.
+- Must be located in the \`whois/\` directory.`
       });
     }
 
+    if (errorTypes.jsonFormat) {
+      helpSections.push({
+        title: "Fix JSON Format",
+        content: `JSON files must be valid JSON objects and adhere to the predefined schema.
+
+**Solutions:**
+1. Ensure the file content is a valid JSON object. You can use an online JSON validator to check.
+2. Check for any syntax errors in the JSON (e.g., missing commas, unmatched quotes, etc.).
+3. Ensure the root level of the JSON is an object, not an array or other type.
+4. Ensure all required fields are present and their value types are correct.`
+      });
+    }
+
+    if (errorTypes.registrant) {
+      helpSections.push({
+        title: "Fix Registrant Information",
+        content: `The 'registrant' field is required and must be a valid email address.
+
+**Solutions:**
+1. Ensure the 'registrant' field exists.
+2. Ensure the email address is in the correct format (e.g., \`user@example.com\`).
+3. Check for any typos or incorrect email addresses.`
+      });
+    }
+
+    if (errorTypes.domain) {
+      helpSections.push({
+        title: "Fix Domain Information",
+        content: `The 'domain' field is required, must be a string, and follow specific naming rules.
+
+**Solutions:**
+1. Ensure the 'domain' field exists and is of string type.
+2. The domain must consist of alphanumeric characters and hyphens, or be in Punycode (\`xn--\` format).
+3. The domain length must be at least 3 characters.
+4. The domain cannot start or end with a hyphen.
+5. Please ensure your domain is not in the reserved words list.`
+      });
+    }
+
+    if (errorTypes.reservedWords) {
+      helpSections.push({
+        title: "Avoid Reserved Words",
+        content: `Domain names cannot conflict with reserved words. Reserved words are used to protect system functions and avoid confusion.
+
+**Solutions:**
+1. Please choose a domain name that does not contain or match any reserved words.
+2. You can view the list of reserved words in the \`reserved_words.txt\` file.`
+      });
+    }
+
+    if (errorTypes.sld) {
+      helpSections.push({
+        title: "Fix SLD (Second Level Domain) Information",
+        content: `The 'sld' field is required, must be a string, and must be a supported domain suffix.
+
+**Solutions:**
+1. Ensure the 'sld' field exists and is of string type.
+2. Your SLD must be in the list of supported suffixes. Currently supported SLDs include: ${config.sld ? config.sld.join(', ') : 'Please check config.js file'}
+3. If your SLD is not in the list, you may need to contact the project maintainers.`
+      });
+    }
+    if (errorTypes.nameservers) {
+      helpSections.push({
+        title: "Fix Nameservers",
+        content: `The 'nameservers' field is required and must be an array of valid nameserver hostnames.
+
+**Solutions:**
+1. Ensure the 'nameservers' field exists and is of array type.
+2. Each element in the array must be a valid domain name format, for example: [\"ns1.example.com\", \"ns2.example.com\"].
+3. At least two nameservers must be provided.
+4. Please ensure nameservers do not contain illegal characters or IP addresses.`
+      });
+    }
+    if (errorTypes.agreements) {
+      helpSections.push({
+        title: "Agree to Agreements",
+        content: `The 'agree_to_agreements' field is required and must be set to \`true\` to confirm your acceptance of all related agreements.
+
+**Solutions:**
+1. Ensure the 'agree_to_agreements' field exists.
+2. Set the value of \`agree_to_agreements\` to \`true\`.
+3. You can find the relevant agreement files in the \`agreements/\` directory, such as the [Privacy Policy](agreements/privacy-policy.md) and [Acceptable Use Policy](agreements/acceptable-use-policy.md).`
+      });
+    }
+    if (errorTypes.consistency) {
+      helpSections.push({
+        title: "Fix Title and Filename Consistency",
+        content: `The domain name in the PR title must exactly match the domain name in the filename.
+
+**Solutions:**
+1. Check the domain portion in the PR title (e.g., \`example.no.kg\`).
+2. Check the JSON filename you created or modified in the \`whois/\` directory (e.g., \`whois/example.no.kg.json\`).
+3. Ensure they are exactly consistent, including both the domain and SLD parts. For example, if the title is \`Registration: mydomain.no.kg\`, the filename should be \`whois/mydomain.no.kg.json\`.`
+      });
+    }
     if (errorTypes.removeOperation) {
       helpSections.push({
         title: "Fix Remove Operation Issues",
-        content: `For Remove operations:
-1. The file must exist in the repository
-2. The file must be marked for deletion
-3. The file name must match the domain in the PR title
-4. You must have proper permissions to remove the domain
+        content: `For 'Remove' operations, specific conditions must be met:
 
-Please ensure:
-- You are removing the correct file
-- The file exists in the main branch
-- You have the necessary permissions`
+**Solutions:**
+1. Ensure your PR only contains a single file deletion operation, and the file's status must be 'removed'.
+2. The file you are attempting to delete must already exist in the repository's \`main\` branch.
+3. The name of the deleted file must exactly match the domain specified in the PR title.
+4. Please check if you have the necessary permissions to delete the file corresponding to this domain.`
       });
     }
+    if (errorTypes.branchName) {
+      helpSections.push({
+        title: "Fix Branch Name Format",
+        content: `The branch name for your PR must:
+- Not be 'main'.
+- Follow the pattern: 
+  
+  \tdomain.sld-request-<number>
+  
+  where domain.sld matches the domain and SLD in your JSON file and PR title, and <number> is a positive integer (e.g., \`example.no.kg-request-123\`).
 
-    // Add more error type help information...
-    // You can continue adding help for other error types here
-
+**Solutions:**
+1. Create your PR from a feature branch, not from 'main'.
+2. Name your branch exactly as described above, matching your domain and SLD.
+3. If your branch name does not match, please rename your branch and resubmit the PR.`
+      });
+    }
     return helpSections;
   }
 
-  /**
-   * Categorize error messages
-   */
   categorizeErrors(errors) {
     const categories = {
       titleFormat: false,
-      descriptionLength: false,
+      description: false,
       fileCount: false,
       filePath: false,
       jsonFormat: false,
@@ -885,23 +1036,20 @@ Please ensure:
       nameservers: false,
       agreements: false,
       consistency: false,
-      removeOperation: false  // Add new error type
+      removeOperation: false,
+      branchName: false
     };
-
     errors.forEach(error => {
-      // Add check for undefined errors
       if (!error) {
         console.warn('Encountered undefined error in categorizeErrors');
         return;
       }
-      
       const errorLower = error.toLowerCase();
-      
       if (errorLower.includes('title format') || errorLower.includes('pr title')) {
         categories.titleFormat = true;
       }
-      if (errorLower.includes('description') && errorLower.includes('1300')) {
-        categories.descriptionLength = true;
+      if (errorLower.includes('description') || errorLower.includes('operation type section') || errorLower.includes('domain section') || errorLower.includes('confirmation items section') || errorLower.includes('select one operation type') || errorLower.includes('select only one operation type')) {
+        categories.description = true;
       }
       if (errorLower.includes('file change') || errorLower.includes('file count')) {
         categories.fileCount = true;
@@ -909,13 +1057,13 @@ Please ensure:
       if (errorLower.includes('file path') || errorLower.includes('whois/')) {
         categories.filePath = true;
       }
-      if (errorLower.includes('json format') || (errorLower.includes('json') && errorLower.includes('invalid'))) {
+      if (errorLower.includes('json format') || errorLower.includes('json file content') || errorLower.includes('root level must be an object') || (errorLower.includes('json') && errorLower.includes('invalid'))) {
         categories.jsonFormat = true;
       }
       if (errorLower.includes('registrant') || errorLower.includes('email')) {
         categories.registrant = true;
       }
-      if (errorLower.includes('domain') && !errorLower.includes('reserved')) {
+      if (errorLower.includes('domain') && !errorLower.includes('reserved') && !errorLower.includes('sld')) {
         categories.domain = true;
       }
       if (errorLower.includes('reserved') || errorLower.includes('conflicts')) {
@@ -930,204 +1078,37 @@ Please ensure:
       if (errorLower.includes('agree_to_agreements') || errorLower.includes('agreement')) {
         categories.agreements = true;
       }
-      if (errorLower.includes('not match') || errorLower.includes('consistency')) {
+      if (errorLower.includes('not match') || errorLower.includes('consistency') || errorLower.includes('filename')) {
         categories.consistency = true;
       }
-      // Add Remove operation related error checking
       if (errorLower.includes('remove operation') || 
           errorLower.includes('cannot remove file') ||
           (errorLower.includes('file') && errorLower.includes('removed'))) {
         categories.removeOperation = true;
       }
+      if (errorLower.includes('branch name') || errorLower.includes('branch naming') || errorLower.includes('merge from the') || errorLower.includes('not allowed') || errorLower.includes('expected format:')) {
+        categories.branchName = true;
+      }
     });
-
     return categories;
   }
 
   /**
-   * Save validation results to file
+   * Save validation result to file, ensure directory exists
    */
   saveValidationResult(validationResult) {
     try {
-      const resultPath = path.join(__dirname, 'validation-result.json');
-      fs.writeFileSync(resultPath, JSON.stringify(validationResult, null, 2));
-      console.log('Validation result saved to:', resultPath);
-    } catch (error) {
-      console.error('Failed to save validation result:', error);
+      const resultFilePath = path.resolve('pr/.github/scripts/validation-result.json');
+      const resultDir = path.dirname(resultFilePath);
+      if (!fs.existsSync(resultDir)) {
+        fs.mkdirSync(resultDir, { recursive: true });
+      }
+      fs.writeFileSync(resultFilePath, JSON.stringify(validationResult, null, 2));
+      logger.info(`Validation result saved to ${resultFilePath}`);
+    } catch (err) {
+      logger.error('Failed to save validation result:', err);
     }
-  }
-
-  /**
-   * Validate domain suffix is supported
-   */
-  async validateDomainSuffix(suffix) {
-    const result = { isValid: false, error: null };
-
-    try {
-      // Get supported SLD list
-      const supportedSLDs = await sldService.getSupportedSLDs();
-
-      if (!supportedSLDs || !Array.isArray(supportedSLDs)) {
-        result.error = 'Unable to validate domain suffix due to SLD list unavailable';
-        return result;
-      }
-
-      // Check if suffix is supported
-      if (!supportedSLDs.includes(suffix)) {
-        result.error = `Domain suffix "${suffix}" is not supported. Supported suffixes are: ${supportedSLDs.join(', ')}`;
-        return result;
-      }
-
-      result.isValid = true;
-      return result;
-
-    } catch (error) {
-      console.error('Error occurred while validating domain suffix:', error);
-      result.error = `Failed to validate domain suffix: ${error.message}`;
-      return result;
-    }
-  }
-
-  /**
-   * Validate SLD status
-   */
-  async validateSLDStatus(sld) {
-    try {
-      const isAvailable = await sldService.isSLDAvailable(sld);
-      
-      if (!isAvailable) {
-        this.errors.push(`SLD "${sld}" is not available. Only SLDs with status "live" are accepted`);
-        return false;
-      }
-
-      return true;
-    } catch (error) {
-      logger.error('Error occurred while validating SLD status:', error);
-      this.errors.push(`Error validating SLD status: ${error.message}`);
-      return false;
-    }
-  }
-
-  /**
-   * Validate PR consistency
-   */
-  async validatePRConsistency(title, filePath) {
-    const titleMatch = /^(Add|Update|Remove|Delete) ([a-z0-9-]+\.[a-z0-9-]+)$/i.exec(title);
-    if (!titleMatch) return false;
-
-    const [, action, domain] = titleMatch;
-    const [sld, tld] = domain.toLowerCase().split('.');
-    const expectedPath = `${sld}/${tld}.json`;
-
-    if (filePath.toLowerCase() !== expectedPath) {
-      this.errors.push('PR title does not match file path');
-      return false;
-    }
-
-    // Validate SLD status for Add and Update actions
-    if (action.toLowerCase() === 'add' || action.toLowerCase() === 'update') {
-      const isValidStatus = await this.validateSLDStatus(sld);
-      if (!isValidStatus) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-
-  /**
-   * Validate Remove Operation
-   */
-  async validateRemoveOperation(file, titleValidation) {
-    const result = { isValid: false, error: null };
-    
-    try {
-      // 1. Validate file status is removed
-      logger.debug(`Validating remove operation for file: ${file.filename}`);
-      logger.debug(`File status: ${file.status}`);
-      
-      if (file.status !== 'removed') {
-        result.error = `For Remove operation, file status must be 'removed', but got '${file.status}'`;
-        logger.error(result.error);
-        return result;
-      }
-      
-      // 2. Validate file exists in main branch
-      const [owner, repo] = config.github.repository.split('/');
-      logger.debug(`Checking if file exists in main branch: ${owner}/${repo}`);
-      
-      const fileExists = await githubService.checkFileExists(
-        file.filename,
-        'main',
-        owner,
-        repo
-      );
-      
-      if (!fileExists) {
-        result.error = `Cannot remove file '${file.filename}' as it does not exist in the repository`;
-        logger.error(result.error);
-        return result;
-      }
-      
-      // 3. Validate filename matches domain in title
-      const expectedFilename = `whois/${titleValidation.domainName}.${titleValidation.sld}.json`;
-      logger.debug(`Comparing filenames - Expected: ${expectedFilename}, Actual: ${file.filename}`);
-      
-      if (file.filename !== expectedFilename) {
-        result.error = `File name '${file.filename}' does not match domain in title '${titleValidation.domainName}.${titleValidation.sld}'`;
-        logger.error(result.error);
-        return result;
-      }
-      
-      logger.info(`Remove operation validation passed for ${file.filename}`);
-      result.isValid = true;
-      return result;
-      
-    } catch (error) {
-      result.error = `Error validating remove operation: ${error.message}`;
-      logger.error(result.error);
-      return result;
-    }
-  }
-
-  /**
-   * Get validation errors
-   */
-  getErrors() {
-    return this.errors;
-  }
-
-  /**
-   * Clear validation errors
-   */
-  clearErrors() {
-    this.errors = [];
   }
 }
 
-// Main execution function
-async function main() {
-  try {
-    console.log('Starting PR validation...');
-    const validator = new PRValidator();
-    const result = await validator.validatePullRequest();
-    
-    if (result.isValid) {
-      console.log('✅ All validations passed');
-      process.exit(0);
-    } else {
-      console.log('❌ Validation failed');
-      process.exit(1);
-    }
-  } catch (error) {
-    console.error('Validation process failed:', error);
-    process.exit(1);
-  }
-}
-
-// If running this script directly
-if (require.main === module) {
-  main();
-}
-
-module.exports = new PRValidator(); 
+module.exports = new PRValidator();
