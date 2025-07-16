@@ -1,0 +1,15 @@
+{
+    "registrant": "tymolu@outlook.com",  
+    "domain": "stu",                        
+    "sld": "htu.edu.kg",                 
+    "nameservers": [                        
+      "ns1.topdn.net",
+      "ns2.topdn.net",
+      "ns3.topdn.net"
+    ],
+    "agree_to_agreements": {                
+      "registration_and_use_agreement": true,
+      "acceptable_use_policy": true,
+      "privacy_policy": true
+    }
+  }
