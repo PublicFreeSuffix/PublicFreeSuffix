@@ -1,0 +1,14 @@
+{
+  "registrant": "delicious.vulture.tdpz@letterprotect.com",
+  "domain": "idea",
+  "sld": "htu.edu.kg",
+  "nameservers": [
+    "asa.ns.cloudflare.com",
+    "kirk.ns.cloudflare.com"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
