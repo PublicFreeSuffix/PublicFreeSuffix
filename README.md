@@ -12,13 +12,20 @@ Anyone can register and obtain their free domain from here and no need renew it 
 no.kg
 htu.edu.kg
 ```
+
+## Supported third-party DNS hosting platforms
+A third-party DNS service hosting platform (paid/free) that has been tested and supported by users. You need to add your desired domain name to these platforms first, obtain the NS record, and then initiate the PR registration process.
+
+[<img alt="dns.he.net" title="dns.he.net" height="40px" style="margin-right:10px" src="https://dns.he.net/include/images/helogo.gif" />](https://dns.he.net/?src=PublicFreeSuffix)
+[<img alt="desec.io" title="desec.io" height="40px" style="margin-right:10px" src="https://desec.io/assets/logo-CP29ePBl.svg" />](https://desec.io/?src=PublicFreeSuffix)
+[<img alt="hostry.com" title="hostry.com" height="40px" src="https://hostry.com/img/logo.svg?v=1.00r3266" />](https://hostry.com/?src=PublicFreeSuffix)
+
 ## How do I register a domain name?
 
 [Acceptable Use Policy](agreements/acceptable-use-policy.md) | 
 [Privacy Policy](agreements/privacy-policy.md) | 
 [Registration And Use Agreement](agreements/registration-and-use-agreement-sokg.md) | 
 [Reserved Words List](reserved_words.txt)
-
 1. Clone the repository:
 ```bash
 git clone https://github.com/PublicFreeSuffix/PublicFreeSuffix.git
@@ -27,8 +34,12 @@ Create a new branch for your own domain name:
 ```bash
 git checkout main
 git pull origin main
-git checkout -b request-{example.no.kg}
+git checkout -b yourdomain.no.kg-request-1
 ```
+Before performing any PR (Pull Request) operation—whether it's registering, updating, or deleting a domain's Whois file—you should always switch back to the main branch and sync the latest changes to your local environment.
+Afterward, create a new branch following the specified branch naming convention. Save your changes, and then create a new PR from this new branch.
+The branch naming convention should always adapt to the specific operation count, using the format: `yourdomain.no.kg-request-{a_number_here}`.
+
 2. Choose avaliable domain name, and create a new whois file into `./whois/{your-new-domain-name}.json` folder:
 ```json
 {
@@ -57,17 +68,15 @@ git checkout -b request-{example.no.kg}
 
 > **Notice** In order to improve utilization and prevent hoarding of registrations and waste of resources, your registered domain name will be revoked if it is detected that no website content has been deployed within 30 consecutive days.
 
-3. Create a pull request with your new domain name and whois file, your PR descriptions should format in [WHOIS_FILE_OPERATION](.github/PULL_REQUEST_TEMPLATE/WHOIS_FILE_OPERATION.md), and the title should format in.
+3. Create a pull request with your new domain name and whois file, your PR descriptions should format in [PR Description Template](.github/pull_request_template.md), and the title should format in:
 ```text
 Registration/Update/Remove: {your-new-domain-name}.{sld}
 ```
 A single Pull Request is only allowed to submit one domain name registration request.
 
-4. Use the registrant email address to send email to `publicfreesuffix@gmail.com` and wait for setup, email title must same as your Pull Request, and content must format in [AUTHORIZATION_EMAIL_TEMPLATE](AUTHORIZATION_EMAIL_TEMPLATE.md).
+4. Complete the registrant email verification according to [Automated Registrant Authorization via Email(ARAE)](AUTHORIZATION.md) description.
 
 5. After the domain is set up, you can use it for your website or other purposes.
 
 ## How do I update my domain's NS / registrant email?
-1. Please modify your whois file and create a new pull request.
-2. Use the registrant email address to send email to `publicfreesuffix@gmail.com` with same content and wait for update.
-3. (If it's an update for registrant email request)Use the new registrant email address to send the same email `publicfreesuffix@gmail.com`.
+It's easy, just modify your whois file and create a new pull request, and then complete the registrant email verification again.

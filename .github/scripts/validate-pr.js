@@ -233,7 +233,7 @@ class PRValidator {
     // Define key sections to check
     const requiredSections = {
       'Operation Type': {
-        regex: /## Operation Type\s*-\s*\[[\sx]]\s*Create,\s*Register a new domain name\.\s*-\s*\[[\sx]]\s*Update,\s*Update NS information or registrant email for an existing domain\.\s*-\s*\[[\sx]]\s*Remove,\s*Cancel my domain name\./m,
+        regex: /## Operation Type\s*-\s*\[[\sx]]\s*Registration,\s*Register a new domain name\.\s*-\s*\[[\sx]]\s*Update,\s*Update NS information or registrant email for an existing domain\.\s*-\s*\[[\sx]]\s*Remove,\s*Cancel my domain name\./m,
         error: 'Operation Type section is missing or incomplete. Please select one operation type.'
       },
       'Domain': {
@@ -744,7 +744,7 @@ ${mentionUser ? `@${mentionUser} ` : ''}**Validation Results:**
 - **Domain:** ${validationResult.details.domainName}.${validationResult.details.sld}
 - **File:** ${validationResult.details.fileName}
 
-This PR meets all requirements and can proceed with review.`;
+⏭️ **Final Step: you just need to complete the registrant's email verification according to [RARE Instructions](https://github.com/PublicFreeSuffix/PublicFreeSuffix/blob/main/AUTHORIZATION.md) to complete the merger.**`;
   }
 
   /**
@@ -770,7 +770,7 @@ ${mentionUser ? `@${mentionUser} ` : ''}**The following issues were found:**
       });
     }
 
-    report += `\n**Need help?** Please refer to the [README](${config.github.readmeUrl}), [PR template](${config.github.templateUrl}) or check the project documentation.`;
+    report += `\n**Need help?** Please refer to the [README](${config.github.readmeUrl}).`;
 
     return report;
   }
@@ -812,7 +812,7 @@ Remove: example.no.kg
 3. Provide detailed operation instructions and contact information
 4. Confirm all agreement terms
 
-**Template link:** [WHOIS_FILE_OPERATION.md](https://raw.githubusercontent.com/PublicFreeSuffix/PublicFreeSuffix/refs/heads/main/.github/PULL_REQUEST_TEMPLATE/WHOIS_FILE_OPERATION.md)`
+**Template link:** [PR Request Template](https://github.com/PublicFreeSuffix/PublicFreeSuffix/blob/main/.github/pull_request_template.md)`
       });
     }
 
