@@ -1,10 +1,10 @@
 {
-  "registrant": "qq0538925@gmail.com",
-  "domain": "summer",
+  "registrant": "e66e66@gmail.com",
+  "domain": "eee",
   "sld": "htu.edu.kg",
   "nameservers": [
-    "ns1.desec.io",
-    "ns2.desec.org"
+    "deborah.ns.cloudflare.com",
+    "remy.ns.cloudflare.com"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,

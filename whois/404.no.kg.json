@@ -1,0 +1,17 @@
+{
+  "registrant": "Ferris03@proton.me",
+  "domain": "404",
+  "sld": "no.kg",
+  "nameservers": [
+    "dns1.p08.nsone.net",
+    "dns2.p08.nsone.net",
+    "dns3.p08.nsone.net",
+    "dns4.p08.nsone.net"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
+
