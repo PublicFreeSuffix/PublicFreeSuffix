@@ -1,0 +1,16 @@
+{
+  "registrant": "431521978@qq.com",
+  "domain": "lzm",
+  "sld": "htu.edu.kg",
+  "nameservers": [
+    "ns1.hostry.com",
+    "ns2.hostry.com",
+    "ns3.hostry.com",
+    "ns4.hostry.com"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
