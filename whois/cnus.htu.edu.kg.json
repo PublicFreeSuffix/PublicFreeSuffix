@@ -3,8 +3,13 @@
   "domain": "cnus",
   "sld": "htu.edu.kg",
   "nameservers": [
+<<<<<<< HEAD
     "ns1.desec.io.",
     "ns2.desec.org."
+=======
+    "ns1.desec.io",
+    "ns2.desec.org"
+>>>>>>> 742b58d9ce395caec552cb8fb2a3d275502749cd
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
