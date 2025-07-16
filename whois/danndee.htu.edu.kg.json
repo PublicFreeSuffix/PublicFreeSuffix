@@ -1,0 +1,12 @@
+{
+  "registrant": "your-email@example.com",
+  "domain": "danndee",
+  "sld": "htu.edu.kg",
+  "nameservers": [
+    "ns1.luadns.com",
+    "ns2.luadns.com",
+    "ns3.luadns.com",
+    "ns4.luadns.com"
+  ],
+  "agree_to_agreements": { ... }
+}
