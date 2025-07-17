@@ -4,7 +4,8 @@
   "sld": "htu.edu.kg",
   "nameservers": [
     "ns1.desec.io",
-    "ns2.desec.org"
+    "ns2.desec.org",
+    "ns3.desec.org"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
