@@ -3,8 +3,10 @@
   "domain": "qby",
   "sld": "htu.edu.kg",
   "nameservers": [
-    "lilith.ns.cloudflare.com",
-    "michael.ns.cloudflare.com"
+    "ns61.cloudns.net",
+    "ns63.cloudns.net",
+    "ns64.cloudns.uk",
+    "ns62.cloudns.com"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,

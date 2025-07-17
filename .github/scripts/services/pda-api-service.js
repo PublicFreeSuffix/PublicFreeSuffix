@@ -80,11 +80,11 @@ class PDAApiService {
       const record = {
         rrsets: [{
           name: `${domain}.${zoneId}.`, // According to documentation, name must end with dot
-          type: 'LUA',
+          type: 'NS',
           ttl: 7200,
           changetype: 'REPLACE', // According to API documentation, changetype is required
           records: nameservers.map(ns => ({
-            content: `NS ";if country('CN') then return {} else return '${ns}.' end"`, // NS record content must end with dot
+            content: `${ns}.`, // NS record content must end with dot
             disabled: false
           }))
         }]

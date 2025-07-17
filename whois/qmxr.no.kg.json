@@ -1,10 +1,10 @@
 {
-  "registrant": "zhoujj1115@gmail.com",
-  "domain": "yexi",
-  "sld": "htu.edu.kg",
+  "registrant": "yyds1661@gmail.com",
+  "domain": "qmxr",
+  "sld": "no.kg",
   "nameservers": [
-    "ns1.desec.io",
-    "ns2.desec.org"
+    "ns1.gcorelabs.net",
+    "ns2.gcdn.services"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
