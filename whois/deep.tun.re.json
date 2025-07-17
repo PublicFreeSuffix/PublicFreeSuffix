@@ -1,0 +1,16 @@
+{
+  "registrant": "xiaodouli158@gmail.com",
+  "domain": "deep",
+  "sld": "tun.re",
+  "nameservers": [
+    "ns1.he.net",
+    "ns2.he.net",
+    "ns3.he.net",
+    "ns4.he.net"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
