@@ -1,10 +1,13 @@
 {
-  "registrant": "jinde98@163.com",
-  "domain": "brick",
+  "registrant": "pretty3568@ynsc.tk",
+  "domain": "cat",
   "sld": "htu.edu.kg",
   "nameservers": [
-    "fred.ns.cloudflare.com",
-    "magali.ns.cloudflare.com"
+    "ns1.he.net",
+    "ns2.he.net",
+    "ns3.he.net",
+    "ns4.he.net",
+    "ns5.he.net"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
