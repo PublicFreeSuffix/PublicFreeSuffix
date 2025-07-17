@@ -3,8 +3,11 @@
   "domain": "xju",
   "sld": "htu.edu.kg",
   "nameservers": [
-    "gordon.ns.cloudflare.com",
-    "violet.ns.cloudflare.com"
+    "ns1.he.net",
+    "ns2.he.net",
+    "ns3.he.net",
+    "ns4.he.net",
+    "ns5.he.net"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,

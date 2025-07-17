@@ -3,8 +3,10 @@
   "domain": "octo",
   "sld": "htu.edu.kg",
   "nameservers": [
-    "gigi.ns.cloudflare.com",
-    "rob.ns.cloudflare.com"
+    "ns61.cloudns.net",
+    "ns62.cloudns.net",
+    "ns63.cloudns.net",
+    "ns64.cloudns.uk"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
