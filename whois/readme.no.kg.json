@@ -1,0 +1,17 @@
+{
+  "registrant": "heiheibingo@qq.com",
+  "domain": "readme",
+  "sld": "no.kg",
+  "nameservers": [
+    "ns5.he.net",
+    "ns4.he.net",
+    "ns3.he.net",
+    "ns2.he.net",
+    "ns1.he.net"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
