@@ -29,7 +29,7 @@ module.exports = {
   github: {
     repository: process.env.GITHUB_REPOSITORY || 'PublicFreeSuffix/PublicFreeSuffix',
     readmeUrl: 'https://github.com/PublicFreeSuffix/PublicFreeSuffix/blob/main/README.md',
-    templateUrl: 'https://raw.githubusercontent.com/PublicFreeSuffix/PublicFreeSuffix/refs/heads/main/.github/PULL_REQUEST_TEMPLATE/WHOIS_FILE_OPERATION.md',
+    templateUrl: 'https://github.com/PublicFreeSuffix/PublicFreeSuffix/blob/main/.github/pull_request_template.md',
     labels: {
       validationPassed: 'validation-passed',
       validationFailed: 'validation-failed'
