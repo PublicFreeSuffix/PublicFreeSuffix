@@ -3,8 +3,8 @@
   "domain": "idea",
   "sld": "htu.edu.kg",
   "nameservers": [
-    "asa.ns.cloudflare.com",
-    "kirk.ns.cloudflare.com"
+    "ns1.desec.io",
+    "ns2.desec.org"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
