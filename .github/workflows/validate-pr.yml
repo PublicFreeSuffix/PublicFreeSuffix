@@ -4,8 +4,8 @@ on:
   # Auto trigger
   pull_request_target:  # Use pull_request_target to get correct token permissions
     types: [opened, synchronize, reopened, edited]
-    paths:
-      - 'whois/*.json'
+    # paths:
+    #   - 'whois/*.json'
   # Manual trigger
   workflow_dispatch:
     inputs:
