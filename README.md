@@ -9,8 +9,11 @@
 
 Anyone can register and obtain their free domain from here and no need renew it annually. The suffixes currently providing services are as follows (sld):
 ```text
+pfsdns.org
+nastu.net
+tun.re
+6ti.net
 no.kg
-htu.edu.kg
 ```
 
 ## Supported third-party DNS hosting platforms
@@ -80,3 +83,5 @@ A single Pull Request is only allowed to submit one domain name registration req
 
 ## How do I update my domain's NS / registrant email?
 It's easy, just modify your whois file and create a new pull request, and then complete the registrant email verification again.
+
+[<img title="Report domain abuse" src="https://i.postimg.cc/Xq7VHpLs/rebuse-log.png" height="35px" />](https://forms.gle/cXkxrKbdoeBsKBQdA)

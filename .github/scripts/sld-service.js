@@ -67,6 +67,21 @@ class SLDService {
   }
 
   /**
+   * Get the status of a specific SLD.
+   * @param {string} sld - The SLD to check.
+   * @returns {Promise<string|null>} The status of the SLD (e.g., 'live', 'reserved') or null if not found.
+   */
+  async getSLDStatus(sld) {
+    try {
+      const sldInfo = await this.getSLDInfo(sld);
+      return sldInfo?.status || null;
+    } catch (error) {
+      logger.error(`Error getting SLD status for ${sld}:`, error);
+      return null;
+    }
+  }
+
+  /**
    * Get SLD list (prioritize cache)
    * @private
    * @returns {Promise<Object|null>} SLD list object or null

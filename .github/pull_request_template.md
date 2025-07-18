@@ -17,4 +17,4 @@
 - [ ] I confirm that I have read and agree to the [Privacy Policy](https://github.com/PublicFreeSuffix/PublicFreeSuffix/blob/main/agreements/privacy-policy.md).
 - [ ] I confirm that I have read and agree to the [Registration And Use Agreement](https://github.com/PublicFreeSuffix/PublicFreeSuffix/blob/main/agreements/registration-and-use-agreement-sokg.md).
 - [ ] I confirm that the domain does not contain any reserved terms from the [Reserved Words List](https://github.com/PublicFreeSuffix/PublicFreeSuffix/blob/main/reserved_words.txt).
-- [ ] I confirm that I will complete the registrant's email verification according to [RARE Instructions](https://github.com/PublicFreeSuffix/PublicFreeSuffix/blob/main/AUTHORIZATION.md) to complete the merger.
+- [ ] I confirm that I will complete the registrant's email verification according to [ARAE Instructions](https://github.com/PublicFreeSuffix/PublicFreeSuffix/blob/main/AUTHORIZATION.md) to complete the merger.

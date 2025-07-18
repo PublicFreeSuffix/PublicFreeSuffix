@@ -1,10 +1,12 @@
 {
-  "registrant": "k01nxm@gmail.com",
-  "domain": "cnus",
+  "registrant": "cyfurry233@gmail.com",
+  "domain": "warma",
   "sld": "htu.edu.kg",
   "nameservers": [
-    "ns1.desec.io",
-    "ns2.desec.org"
+    "ns1.he.net",
+    "ns2.he.net",
+    "ns3.he.net",
+    "ns4.he.net"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
