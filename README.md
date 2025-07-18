@@ -1,3 +1,34 @@
+
+<div align="right">
+  <details>
+    <summary >🌐 Language</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=PublicFreeSuffix&project=PublicFreeSuffix&lang=id">Bahasa Indonesia</a>
+      </div>
+    </div>
+  </details>
+</div>
+
 # Public Free Suffix: Free Domain Name For Everyone
 
 **Public Free Suffix** is a non-profit, free subdomain service designed to empower various communities. We believe in providing accessible resources for:
