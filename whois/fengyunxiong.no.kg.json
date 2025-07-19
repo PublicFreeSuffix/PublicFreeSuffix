@@ -4,8 +4,7 @@
   "sld": "no.kg",
   "nameservers": [
     "fengyunxiong.no.kg",
-    "fengyunxiong.no.kg",
-  
+    "fengyunxiong.no.kg", 
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
