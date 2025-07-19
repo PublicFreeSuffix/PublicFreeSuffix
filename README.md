@@ -14,7 +14,6 @@ nastu.net
 tun.re
 6ti.net
 no.kg
-htu.edu.kg
 ```
 
 ## Supported third-party DNS hosting platforms
