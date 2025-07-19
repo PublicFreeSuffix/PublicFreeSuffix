@@ -3,8 +3,8 @@
   "domain": "fengyunxiong",
   "sld": "no.kg",
   "nameservers": [
-    "fengyunxiong.no.kg",
-    "fengyunxiong.no.kg", 
+    "ns1.hostry.com",
+    "ns1.hostry.com", 
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
