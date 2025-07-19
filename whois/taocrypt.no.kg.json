@@ -3,7 +3,6 @@
   "domain": "taocrypt",
   "sld": "no.kg",
   "nameservers": [
- taocrypt.no.kg-request-1
     "ns2.gcdn.services",
     "ns1.gcorelabs.net"
   ],
