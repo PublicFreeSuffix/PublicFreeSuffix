@@ -1,11 +1,10 @@
 {
-  "registrant": "taocrypt@outlook.com",
-  "domain": "taocrypt",
-  "sld": "no.kg",
+  "registrant": "zhangchilde12@gmail.com",
+  "domain": "love",
+  "sld": "htu.edu.kg",
   "nameservers": [
- taocrypt.no.kg-request-1
-    "ns2.gcdn.services",
-    "ns1.gcorelabs.net"
+    "ns1.desec.io",
+    "ns2.desec.org"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
