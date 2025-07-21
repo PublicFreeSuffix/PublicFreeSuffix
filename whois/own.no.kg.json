@@ -1,12 +1,10 @@
 {
-  "registrant": "xiaodouli158@gmail.com",
-  "domain": "xiaodouli",
+  "registrant": "qiupeng5243@gmail.com",
+  "domain": "own",
   "sld": "no.kg",
   "nameservers": [
-    "ns1.he.net",
-    "ns2.he.net",
-    "ns3.he.net",
-    "ns4.he.net"
+    "ns1.gcorelabs.net",
+    "ns2.gcdn.services"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,

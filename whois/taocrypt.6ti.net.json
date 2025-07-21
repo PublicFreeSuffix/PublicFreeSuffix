@@ -1,12 +1,10 @@
 {
-  "registrant": "xiaodouli158@gmail.com",
-  "domain": "xiaodouli",
-  "sld": "no.kg",
+  "registrant": "taocrypt@outlook.com",
+  "domain": "taocrypt",
+  "sld": "6ti.net",
   "nameservers": [
-    "ns1.he.net",
-    "ns2.he.net",
-    "ns3.he.net",
-    "ns4.he.net"
+    "ns2.gcdn.services",
+    "ns1.gcorelabs.net"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,

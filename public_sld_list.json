@@ -45,7 +45,7 @@
     }
   },
   "htu.edu.kg": {
-    "status": "live",
+    "status": "offline",
     "operator": {
       "organization": "Public Free Suffix",
       "website": "https://github.com/PublicFreeSuffix",
