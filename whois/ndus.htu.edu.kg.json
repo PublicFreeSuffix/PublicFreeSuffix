@@ -1,12 +1,13 @@
 {
-  "registrant": "Drinkingings@proton.me",
-  "domain": "cat",
+  "registrant": "zjl256904767@gmail.com",
+  "domain": "ndus",
   "sld": "htu.edu.kg",
   "nameservers": [
-    "dns1.p01.nsone.net",
-    "dns2.p01.nsone.net",
-    "dns3.p01.nsone.net",
-    "dns4.p01.nsone.net"
+    "ns1.he.net",
+    "ns2.he.net",
+    "ns3.he.net",
+    "ns4.he.net",
+    "ns5.he.net"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
@@ -14,4 +15,3 @@
     "privacy_policy": true
   }
 }
-

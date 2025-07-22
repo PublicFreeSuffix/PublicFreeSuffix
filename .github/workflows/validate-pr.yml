@@ -4,8 +4,8 @@ on:
   # Auto trigger
   pull_request_target:  # Use pull_request_target to get correct token permissions
     types: [opened, synchronize, reopened, edited]
-    paths:
-      - 'whois/*.json'
+    # paths:
+    #   - 'whois/*.json'
   # Manual trigger
   workflow_dispatch:
     inputs:
@@ -117,6 +117,7 @@ jobs:
             core.setOutput('head-sha', pullRequest.head?.sha || '');
             core.setOutput('pr-state', pullRequest.state || 'unknown');
             core.setOutput('pr-repo', pullRequest.head?.repo?.full_name || context.repo.full_name);
+            core.setOutput('pr-branch', pullRequest.head?.ref || '');
             
           } catch (error) {
             core.setFailed(`Failed to get PR information: ${error.message}`);
@@ -157,6 +158,7 @@ jobs:
         HEAD_SHA: ${{ steps.pr-info.outputs.head-sha }}
         MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         GITHUB_REPOSITORY: ${{ steps.pr-info.outputs.pr-repo }}
+        PR_BRANCH: ${{ steps.pr-info.outputs.pr-branch }}
 
     - name: Comment on PR
       if: always() && steps.pr-info.outputs.pr-title != ''
