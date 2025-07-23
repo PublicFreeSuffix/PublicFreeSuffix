@@ -3,8 +3,10 @@
   "domain": "525",
   "sld": "tun.re",
   "nameservers": [
-    "ns1.desec.io",
-    "ns2.desec.org"
+    "ns1.luadns.com",
+    "ns2.luadns.com",
+    "ns3.luadns.com",
+    "ns4.luadns.com"
      ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
