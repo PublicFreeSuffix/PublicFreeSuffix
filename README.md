@@ -9,8 +9,11 @@
 
 Anyone can register and obtain their free domain from here and no need renew it annually. The suffixes currently providing services are as follows (sld):
 ```text
+pfsdns.org
+nastu.net
+tun.re
+6ti.net
 no.kg
-htu.edu.kg
 ```
 
 ## Supported third-party DNS hosting platforms

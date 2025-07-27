@@ -1,12 +1,10 @@
 {
-  "registrant": "xiaodouli158@gmail.com",
-  "domain": "xiaodouli",
+  "registrant": "subterfuge66@gmail.com",
+  "domain": "nil",
   "sld": "no.kg",
   "nameservers": [
-    "ns1.he.net",
-    "ns2.he.net",
-    "ns3.he.net",
-    "ns4.he.net"
+    "dns1.serv00.com",
+    "dns2.serv00.com"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
