@@ -3,8 +3,8 @@
   "domain": "haczc",
   "sld": "6ti.net",
   "nameservers": [
-    "ns1.desec.io.",
-    "ns2.desec.org.",
+    "ns1.desec.io",
+    "ns2.desec.org"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
