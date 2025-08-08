@@ -1,12 +1,12 @@
 {
   "registrant": "mjcaoo0214@gmail.com",
-  "domain": "mjcaoo",
-  "sld": "htu.edu.kg",
+  "domain": "bdai",
+  "sld": "tun.re",
   "nameservers": [
-    "ns61.cloudns.net",
-    "ns62.cloudns.com",
-    "ns63.cloudns.net",
-    "ns64.cloudns.uk"
+    "ns1.luadns.net",
+    "ns2.luadns.net",
+    "ns3.luadns.net",
+    "ns4.luadns.net"
   ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
