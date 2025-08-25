@@ -1,0 +1,17 @@
+{
+  "registrant": "hostsieure.services@gmail.com",
+  "domain": "fwh",
+  "sld": "no.kg",
+  "nameservers": [
+    "ns1.byet.org",
+    "ns2.byet.org",
+    "ns3.byet.org",
+    "ns4.byet.org",
+    "ns5.byet.org"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
