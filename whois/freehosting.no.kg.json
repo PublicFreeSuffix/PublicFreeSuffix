@@ -1,0 +1,16 @@
+{
+  "registrant": "hostsieure.services@gmail.com",
+  "domain": "freehosting",
+  "sld": "no.kg",
+  "nameservers": [
+    "ns11.cloudns.net",
+    "ns12.cloudns.net",
+    "ns13.cloudns.net",
+    "ns14.cloudns.net"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
