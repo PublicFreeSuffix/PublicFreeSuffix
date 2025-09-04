@@ -1,0 +1,14 @@
+{
+  "registrant": "simonzhr2115@gmail.com",
+  "domain": "herryzzz2115",
+  "sld": "no.kg",
+  "nameservers": [
+    "candy.ns.cloudflare.com",
+    "graham.ns.cloudflare.com"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
