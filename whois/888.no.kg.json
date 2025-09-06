@@ -1,0 +1,16 @@
+{
+  "registrant": "a90lcy@gmail.com",
+  "domain": "888",
+  "sld": "no.kg",
+  "nameservers": [
+    "ns41.cloudns.net",
+	"ns42.cloudns.net",
+	"ns43.cloudns.net",
+	"ns44.cloudns.net"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
