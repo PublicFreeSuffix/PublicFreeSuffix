@@ -3,12 +3,11 @@
   "domain": "525",
   "sld": "tun.re",
   "nameservers": [
-    "ns1.he.net",
-    "ns2.he.net",
-    "ns3.he.net",
-    "ns4.he.net",
-    "ns5.he.net"
-     ],
+    "ns1.luadns.net",
+    "ns2.luadns.net",
+    "ns3.luadns.net",
+    "ns4.luadns.net"    
+    ],
   "agree_to_agreements": {
     "registration_and_use_agreement": true,
     "acceptable_use_policy": true,
