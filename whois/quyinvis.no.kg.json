@@ -1,0 +1,14 @@
+{
+  "registrant": "quy27963@gmail.com",
+  "domain": "quyinvis",
+  "sld": "no.kg",
+  "nameservers": [
+    "kiki.bunny.net", 
+    "coco.bunny.net"   
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
