@@ -1,0 +1,14 @@
+{
+  "registrant": "realcosra@gmail.com",
+  "domain": "cosra",
+  "sld": "edu.kg",
+  "nameservers": [
+    "fred.ns.cloudflare.com",
+    "magali.ns.cloudflare.com"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
