@@ -1,0 +1,14 @@
+{
+  "registrant": "hackclmm2k5@gmail.com",
+  "domain": "juliana",
+  "sld": "no.kg",
+  "nameservers": [
+    "kiki.bunny.net",
+    "coco.bunny.net"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
