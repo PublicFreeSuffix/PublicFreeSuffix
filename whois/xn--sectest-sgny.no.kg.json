@@ -1,0 +1,14 @@
+{
+  "registrant": "sectest_2025@163.com",  # 邮箱
+  "domain": "xn--sectest-sgny",  # 域名前缀
+  "sld": "no.kg",  # 选择的后缀
+  "nameservers": [
+    "ns1.desec.io",  # 从指定服务商获取的Nameserver（至少2个）
+    "ns2.desec.io"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
