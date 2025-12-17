@@ -1,0 +1,14 @@
+{
+  "registrant": "drsatanic@hotmail.com",
+  "domain": "awenation",
+  "sld": "tun.re",
+  "nameservers": [
+    "ns1.gcorelabs.net",
+    "ns2.gcdn.services"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
