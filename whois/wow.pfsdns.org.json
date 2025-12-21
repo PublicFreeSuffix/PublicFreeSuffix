@@ -1,0 +1,16 @@
+{
+  "registrant": "plaxiaoq@proton.me",
+  "domain": "wow",
+  "sld": "pfsdns.org",
+  "nameservers": [
+    "NS1.AFRAID.ORG",
+    "NS2.AFRAID.ORG",
+    "NS3.AFRAID.ORG",
+    "NS4.AFRAID.ORG"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
