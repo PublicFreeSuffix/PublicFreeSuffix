@@ -1,14 +1,12 @@
 {
-  "description": "Personal website and email forwarding",
-  "owner": {
-    "email": "274366168@qq.com"
-  },
-  "record": {
-    "NS": [
-      "ns71.cloudns.net.",
-      "ns72.cloudns.com.",
-      "ns73.cloudns.net.",
-      "ns74.cloudns.uk."
-    ]
-  }
+  "domain": "zxw.6ti.net",
+  "sld": "6ti.net",
+  "registrant": "274366168@qq.com",
+  "nameservers": [
+    "ns71.cloudns.net",
+    "ns72.cloudns.com",
+    "ns73.cloudns.net",
+    "ns74.cloudns.uk"
+  ],
+  "agree_to_agreements": true
 }
