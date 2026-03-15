@@ -1,0 +1,16 @@
+{
+  "registrant": "274366168@qq.com",
+  "domain": "sega",
+  "sld": "6ti.net",
+  "nameservers": [
+    "ns71.cloudns.net",
+    "ns72.cloudns.com",
+    "ns73.cloudns.net",
+    "ns74.cloudns.uk"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
