@@ -1,0 +1,14 @@
+{
+  "registrant": "zuofiu@gmail.com",
+  "domain": "mohammed-mithaq",
+  "sld": "no.kg",
+  "nameservers": [
+    "ns1.infinityfree.com",
+    "ns2.infinityfree.com"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
