@@ -1,0 +1,14 @@
+{
+  "registrant": "mdansrovy@gmail.com",
+  "domain": "ai-syarovy",
+  "sld": "no.kg",
+  "nameservers": [
+    "annalise.ns.cloudflare.com",
+    "anuj.ns.cloudflare.com"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
