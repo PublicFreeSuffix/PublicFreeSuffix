@@ -1,0 +1,16 @@
+{
+  "registrant": "benjaminlovelace655@gmail.com",
+  "domain": "anilove",
+  "sld": "pfsdns.org",
+  "nameservers": [
+    "ns1.afraid.org",
+    "ns2.afraid.org",
+    "ns3.afraid.org",
+    "ns4.afraid.org"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
