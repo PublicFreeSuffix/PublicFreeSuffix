@@ -1,0 +1,16 @@
+{
+  "registrant": "hojin12312@gmail.com",
+  "domain": "pics-vllm",
+  "sld": "no.kg",
+  "nameservers": [
+    "ns1.cloudflare.com",
+    "ns2.cloudflare.com",
+    "ns3.cloudflare.com",
+    "ns4.cloudflare.com"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
