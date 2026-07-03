@@ -1,0 +1,14 @@
+{
+  "registrant": "mussayohana795@gmail.com",
+  "domain": "mastashub",
+  "sld": "no.kg",
+  "nameservers": [
+    "ns1.vicerocks.com",
+    "ns2.vicerocks.com"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
