@@ -1,0 +1,16 @@
+{
+  "registrant": "vipmc838@gmail.com",
+  "domain": "api",
+  "sld": "nastu.net",
+  "nameservers": [
+    "ns1.huaweicloud-dns.org",
+    "ns1.huaweicloud-dns.net",
+    "ns1.huaweicloud-dns.cn",
+    "ns1.huaweicloud-dns.com"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+     }
+}
