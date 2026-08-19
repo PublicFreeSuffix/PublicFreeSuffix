@@ -3,8 +3,8 @@
     "domain": "pinpoint",
     "sld": "eu.cc",
     "nameservers": [
-        "://cloudflare.com",
-        "://cloudflare.com"
+        "ignat.ns.cloudflare.com",
+        "magali.ns.cloudflare.com"
     ],
     "agree_to_agreements": true
 }
