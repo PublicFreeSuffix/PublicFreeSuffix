@@ -1,0 +1,11 @@
+{
+    "registrant": "modytayfour@gmail.com",
+    "domain": "pinpoint",
+    "sld": "eu.cc",
+    "nameservers": [
+        "ignat.ns.cloudflare.com",
+        "magli.ns.cloudflare.com"
+    ],
+    "agree_to_agreements": true
+}
+ 
