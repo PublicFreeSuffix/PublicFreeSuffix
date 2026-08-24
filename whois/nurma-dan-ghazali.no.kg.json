@@ -1,0 +1,16 @@
+{
+  "registrant": "tedirghazali@gmail.com",
+  "domain": "nurma-dan-ghazali",
+  "sld": "no.kg",
+  "nameservers": [
+    "dns1.p01.nsone.net",
+    "dns2.p01.nsone.net",
+    "dns3.p01.nsone.net",
+    "dns4.p01.nsone.net"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
