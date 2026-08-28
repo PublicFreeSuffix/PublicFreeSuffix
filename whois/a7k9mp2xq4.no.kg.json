@@ -1,0 +1,14 @@
+{
+  "registrant": "ТВОЙ_EMAIL",
+  "domain": "a7k9mp2xq4",
+  "sld": "no.kg",
+  "nameservers": [
+    "ПЕРВЫЙ_NS_CLOUDFLARE",
+    "ВТОРОЙ_NS_CLOUDFLARE"
+  ],
+  "agree_to_agreements": {
+    "registration_and_use_agreement": true,
+    "acceptable_use_policy": true,
+    "privacy_policy": true
+  }
+}
