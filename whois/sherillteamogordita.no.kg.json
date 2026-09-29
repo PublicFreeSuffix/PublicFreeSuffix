@@ -1,0 +1,12 @@
+{
+  "domain": "sherillteamogordita.no.kg",
+  "owner": {
+    "email": "Vegacifuentessantiago@gmail.com"
+  },
+  "records": {
+    "NS": [
+      "alan.ns.cloudflare.com",
+      "reza.ns.cloudflare.com"
+    ]
+  }
+}
