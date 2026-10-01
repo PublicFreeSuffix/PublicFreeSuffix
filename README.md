@@ -1,5 +1,8 @@
 # Public Free Suffix: Free Domain Name For Everyone
 
+> [!IMPORTANT]
+> **Announcement (October 1, 2026):** We are currently working hard to restore the NS network, and we are establishing official partnerships with industry-leading network service providers to stabilize our service. **Please submit your application as usual** — once the new NS network is deployed, all domain registrations will be processed automatically, and you will receive an email notification at that time. We are also seeking sponsors to help restore the prosperity and stability of this project. If you are interested in sponsoring us, please open an [Issue](https://github.com/PublicFreeSuffix/PublicFreeSuffix/issues) to get in touch.
+
 **Public Free Suffix** is a non-profit, free subdomain service designed to empower various communities. We believe in providing accessible resources for:
 
 * **Developers:** Perfect for project testing, staging environments, and personal development sandboxes.
