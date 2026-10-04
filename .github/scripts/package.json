@@ -1,15 +1,13 @@
 {
   "name": "pr-validation-scripts",
   "version": "1.0.0",
-  "description": "Scripts for validating pull requests and DNS synchronization",
+  "description": "Scripts for validating pull requests",
   "main": "validate-pr.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dns-sync": "node dns-sync.js",
-    "test-dns": "node test-dns-sync.js"
+    "validate": "node validate-pr.js"
   },
   "dependencies": {
-    "@octokit/rest": "^20.0.0",
-    "axios": "^1.6.0"
+    "@octokit/rest": "^20.0.0"
   }
-} 
+}

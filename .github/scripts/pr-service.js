@@ -45,13 +45,28 @@ async function getFileContent(file, prData) {
  * Get PR data from environment variables and GitHub API
  */
 async function getPRDataFromEnv() {
+  // Preferred source: the pull_request event payload (auto-triggered runs).
+  let pr = null;
   const eventPath = process.env.GITHUB_EVENT_PATH;
-  if (!eventPath) {
-    throw new Error("GITHUB_EVENT_PATH environment variable not set");
+  if (eventPath) {
+    const event = require(eventPath);
+    pr = event.pull_request || null;
   }
-  const event = require(eventPath);
 
-  const pr = event.pull_request;
+  // Fallback for workflow_dispatch (manual re-validation): the event payload
+  // has no pull_request, so fetch the PR via the PR_NUMBER env variable.
+  if (!pr && process.env.PR_NUMBER) {
+    const [owner, repo] = config.github.repository.split("/");
+    logger.info(
+      `No pull_request in event payload, fetching PR #${process.env.PR_NUMBER} via API (manual trigger)`,
+    );
+    pr = await githubService.getPullRequest(
+      parseInt(process.env.PR_NUMBER, 10),
+      owner,
+      repo,
+    );
+  }
+
   if (!pr) {
     throw new Error("Could not find pull request data in event payload");
   }

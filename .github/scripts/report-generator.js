@@ -225,12 +225,23 @@ async function generateValidationReport(validationResult, mentionUser = null) {
     ? generateSuccessReport(validationResult, mentionUser)
     : generateFailureReport(validationResult, mentionUser);
 
+  await applyValidationLabels(validationResult);
+
+  return report;
+}
+
+/**
+ * Apply validation-passed/failed labels to the PR (base repository).
+ */
+async function applyValidationLabels(validationResult) {
   try {
     if (process.env.PR_NUMBER) {
-      const [owner, repo] = config.github.repository.split("/");
+      const baseRepository =
+        process.env.BASE_REPOSITORY || config.github.repository;
+      const [owner, repo] = baseRepository.split("/");
       const labels = validationResult.isValid
-        ? ["validation-passed"]
-        : ["validation-failed"];
+        ? [config.github.labels.validationPassed]
+        : [config.github.labels.validationFailed];
       await githubService.updatePullRequestLabels(
         process.env.PR_NUMBER,
         labels,
@@ -241,8 +252,45 @@ async function generateValidationReport(validationResult, mentionUser = null) {
   } catch (error) {
     logger.error("Failed to update PR labels:", error);
   }
+}
+
+/**
+ * Generate the transitional validation report (transition period).
+ */
+async function generateTransitionReport(validationResult, mentionUser = null) {
+  let report;
+  if (validationResult.isValid) {
+    report = `✅ PR Validation Passed
+
+${mentionUser ? `@${mentionUser} ` : ""}Your application has passed the transitional validation. 🎉
+
+**Details:**
+- **Domain:** ${validationResult.details.domainName}.${validationResult.details.sld}
+- **Operation:** ${validationResult.details.actionType}
+- **File:** ${validationResult.details.fileName}
+
+**What happens next?**
+- During the transition period, pull requests are reviewed and merged **manually** by a maintainer — no further action is needed from you right now.
+- Once merged, your domain will be set up accordingly.
+
+> ℹ️ Note: the ARAE email verification is **not** required during the transition period.`;
+  } else {
+    report = `❌ PR Validation Failed
+
+${mentionUser ? `@${mentionUser} ` : ""}During the transition period, a registration only needs to pass two checks: **the sTLD is supported**, and **the domain is not already taken or pending in another pull request**.
+
+**Issues found:**
+`;
+    validationResult.errors.forEach((error, index) => {
+      report += `${index + 1}. ❌ ${error}\n`;
+    });
+    report += `
+**Need help?** Please refer to the [README](${config.github.readmeUrl}).`;
+  }
+
+  await applyValidationLabels(validationResult);
 
   return report;
 }
 
-module.exports = { generateValidationReport };
+module.exports = { generateValidationReport, generateTransitionReport };

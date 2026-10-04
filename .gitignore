@@ -5,4 +5,4 @@
 .cursor/
 .vscode/
 /.env
-.env
+.env.github/scripts/sld_cache.json

@@ -158,6 +158,7 @@ jobs:
         HEAD_SHA: ${{ steps.pr-info.outputs.head-sha }}
         MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         GITHUB_REPOSITORY: ${{ steps.pr-info.outputs.pr-repo }}
+        BASE_REPOSITORY: ${{ github.repository }}
         PR_BRANCH: ${{ steps.pr-info.outputs.pr-branch }}
 
     - name: Comment on PR

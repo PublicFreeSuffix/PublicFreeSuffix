@@ -76,6 +76,32 @@ class GitHubService {
   }
 
   /**
+   * List all open pull requests (paginated)
+   */
+  async listOpenPullRequests(owner, repo) {
+    try {
+      const prs = [];
+      let page = 1;
+      for (;;) {
+        const { data } = await this.octokit.pulls.list({
+          owner,
+          repo,
+          state: 'open',
+          per_page: 100,
+          page
+        });
+        prs.push(...data);
+        if (data.length < 100) break;
+        page++;
+      }
+      return prs;
+    } catch (error) {
+      logger.error(`Failed to list open pull requests for ${owner}/${repo}:`, error);
+      throw error;
+    }
+  }
+
+  /**
    * Get PR information
    */
   async getPullRequest(prNumber, owner, repo) {

@@ -3,6 +3,16 @@
  */
 
 module.exports = {
+  // Transitional validation mode:
+  // When enabled, a PR only needs to pass two checks to be approved:
+  //   1. The domain uses a supported sTLD
+  //   2. The domain is not duplicated (not on main, not pending in another open PR)
+  // Approved PRs are merged MANUALLY by a maintainer — nothing merges automatically.
+  // Set enabled: false to restore full validation.
+  transition: {
+    enabled: true,
+  },
+
   pda: {
     // API base URL, e.g.: https://pdd.example.com
     apiUrl: process.env.PDA_API_URL || 'https://pdd.example.com',
