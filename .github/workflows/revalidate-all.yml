@@ -33,3 +33,4 @@ jobs:
             sleep 2
           done
           echo "Dispatched: $count, failed: $failed"
+# round 6: refresh statuses with failure-state fix
