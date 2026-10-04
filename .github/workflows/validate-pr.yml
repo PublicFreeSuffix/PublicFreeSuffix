@@ -243,6 +243,7 @@ jobs:
               state = 'success';
               description = 'All validation checks passed';
             } else {
+              state = 'failure';
               description = 'Validation failed: ' + validationResult.errors.slice(0, 100).join(', ');
             }
           } catch (error) {
