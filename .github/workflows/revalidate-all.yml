@@ -33,3 +33,5 @@ jobs:
             sleep 2
           done
           echo "Dispatched: $count, failed: $failed"
+
+# re-trigger batch revalidation

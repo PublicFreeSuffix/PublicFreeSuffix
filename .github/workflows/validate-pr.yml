@@ -26,31 +26,14 @@ jobs:
   validate-pr:
     runs-on: ubuntu-latest
     name: Validate Pull Request
-    
+
     steps:
     - name: Checkout base repository
       uses: actions/checkout@v4
       with:
-        path: base
         fetch-depth: 0
         ref: main
         token: ${{ secrets.MY_GITHUB_TOKEN }}
-
-    - name: Checkout PR
-      if: github.event_name == 'pull_request_target'
-      uses: actions/checkout@v4
-      with:
-        path: pr
-        fetch-depth: 0
-        ref: ${{ github.event.pull_request.head.sha }}
-        token: ${{ secrets.MY_GITHUB_TOKEN }}
-        repository: ${{ github.event.pull_request.head.repo.full_name }}
-
-    - name: Copy validation scripts
-      run: |
-        mkdir -p pr/.github/scripts
-        cp -r base/.github/scripts/* pr/.github/scripts/
-        rm -rf base
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -58,7 +41,7 @@ jobs:
         node-version: '20'
 
     - name: Install dependencies
-      working-directory: pr/.github/scripts
+      working-directory: .github/scripts
       run: |
         # Ensure package-lock.json is generated
         if [ ! -f "package-lock.json" ]; then
@@ -147,7 +130,7 @@ jobs:
     - name: Validate Pull Request
       id: validate
       if: steps.pr-info.outputs.pr-title != ''
-      working-directory: pr/.github/scripts
+      working-directory: .github/scripts
       run: node validate-pr.js
       env:
         PR_TITLE: ${{ steps.pr-info.outputs.pr-title }}
@@ -172,7 +155,7 @@ jobs:
           let validationResult;
           try {
             console.log('Reading validation result file...');
-            const resultData = fs.readFileSync('pr/.github/scripts/validation-result.json', 'utf8');
+            const resultData = fs.readFileSync('.github/scripts/validation-result.json', 'utf8');
             console.log('Validation result file content:', resultData);
             validationResult = JSON.parse(resultData);
             console.log('Parsed validation result:', JSON.stringify(validationResult, null, 2));
@@ -250,9 +233,9 @@ jobs:
           let description = 'Validation failed';
           
           try {
-            const resultData = fs.readFileSync('pr/.github/scripts/validation-result.json', 'utf8');
+            const resultData = fs.readFileSync('.github/scripts/validation-result.json', 'utf8');
             const validationResult = JSON.parse(resultData);
-            
+
             if (validationResult.isValid) {
               state = 'success';
               description = 'All validation checks passed';
@@ -276,8 +259,8 @@ jobs:
     - name: Check validation result
       if: always() && steps.pr-info.outputs.pr-title != ''
       run: |
-        if [ -f pr/.github/scripts/validation-result.json ]; then
-          VALIDATION_RESULT=$(cat pr/.github/scripts/validation-result.json)
+        if [ -f .github/scripts/validation-result.json ]; then
+          VALIDATION_RESULT=$(cat .github/scripts/validation-result.json)
           IS_VALID=$(echo "$VALIDATION_RESULT" | jq -r '.isValid')
           if [ "$IS_VALID" != "true" ]; then
             echo "PR validation failed"
