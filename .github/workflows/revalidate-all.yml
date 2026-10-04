@@ -22,7 +22,7 @@ jobs:
         run: |
           count=0
           failed=0
-          for pr in $(gh pr list --state open --json number --jq '.[].number' -R "$GITHUB_REPOSITORY"); do
+          for pr in $(gh pr list --state open --limit 200 --json number --jq '.[].number' -R "$GITHUB_REPOSITORY"); do
             echo "Dispatching validation for PR #$pr"
             if gh workflow run validate-pr.yml -f pr_number="$pr" -R "$GITHUB_REPOSITORY"; then
               count=$((count + 1))

@@ -177,9 +177,10 @@ jobs:
             issue_number: parseInt(prNumber)
           });
           
-          const validationComments = comments.filter(comment => 
-            comment.user.login === 'github-actions[bot]' && 
-            (comment.body.includes('PR Validation Passed') || 
+          const validationComments = comments.filter(comment =>
+            (comment.user.login === 'github-actions[bot]' ||
+             comment.user.login === 'PublicFreeSuffix') &&
+            (comment.body.includes('PR Validation Passed') ||
              comment.body.includes('PR Validation Failed'))
           );
           
