@@ -1,90 +1,41 @@
-# Public Free Suffix: Free Domain Name For Everyone
+# Public Free Suffix: Free Domain Names For Everyone
 
-> [!IMPORTANT]
-> **Announcement (October 1, 2026):** We are currently working hard to restore the NS network, and we are establishing official partnerships with industry-leading network service providers to stabilize our service. **Please submit your application as usual** — once the new NS network is deployed, all domain registrations will be processed automatically, and you will receive an email notification at that time. We are also seeking sponsors to help restore the prosperity and stability of this project. If you are interested in sponsoring us, please open an [Issue](https://github.com/PublicFreeSuffix/PublicFreeSuffix/issues) to get in touch.
+**Public Free Suffix** is a non-profit free subdomain service, sponsored and continuously operated by the [LINUX.TG](https://linux.tg) community. It exists for developers, students, technicians, and personal users who need a domain for a blog, a portfolio, a lab, or a weekend experiment.
 
-**Public Free Suffix** is a non-profit, free subdomain service designed to empower various communities. We believe in providing accessible resources for:
+## How to apply
 
-* **Developers:** Perfect for project testing, staging environments, and personal development sandboxes.
-* **Students:** Ideal for academic research, class projects, and learning new technologies without cost barriers.
-* **Technicians:** An excellent resource for computer and network technology research, lab setups, and experimenting with new configurations.
-* **Personal Users:** Host your personal blog, portfolio, or small passion project within our compliant framework.
+Applications are handled entirely through the LINUX.TG web console — no pull requests, no waiting on email verification.
 
-Anyone can register and obtain their free domain from here and no need renew it annually. The suffixes currently providing services are as follows (sld):
+1. **Add your domain at a supported DNS provider.** Our top pick is [Bunny.net DNS](https://bunny.net/dns/), followed by [He.net DNS](https://dns.he.net/). Other providers work too.
+2. **Register on [LINUX.TG](https://linux.tg)** and verify your GitHub account. Your GitHub account must be at least 2 years old.
+3. **Apply in the [web console](https://linux.tg/domains).** Nameserver delegation is handled automatically, and you can manage or renew your domains there anytime.
+
+## Supported suffixes
+
 ```text
+is-a.si
 pfsdns.org
 nastu.net
 tun.re
-6ti.net
 no.kg
+so.kg
 ```
 
-## Supported third-party DNS hosting platforms
-A third-party DNS service hosting platform (paid/free) that has been tested and supported by users. You need to add your desired domain name to these platforms first, obtain the NS record, and then initiate the PR registration process.
+## The fine print
 
-[<img alt="dns.he.net" title="dns.he.net" height="40px" style="margin-right:10px" src="https://dns.he.net/include/images/helogo.gif" />](https://dns.he.net/?src=PublicFreeSuffix)
-[<img alt="desec.io" title="desec.io" height="40px" style="margin-right:10px" src="https://desec.io/assets/logo-CP29ePBl.svg" />](https://desec.io/?src=PublicFreeSuffix)
-[<img alt="hostry.com" title="hostry.com" height="40px" src="https://hostry.com/img/logo.svg?v=1.00r3266" />](https://hostry.com/?src=PublicFreeSuffix)
+- Domain names must be a single label under the suffix (e.g. `myname.no.kg`, not `my.name.no.kg`), and must not hit the [reserved words list](reserved_words.txt).
+- By registering you agree to the [Registration and Use Agreement](agreements/registration-and-use-agreement-sokg.md), the [Acceptable Use Policy](agreements/acceptable-use-policy.md), and the [Privacy Policy](agreements/privacy-policy.md).
+- Please deploy something within **30 days** — domains held for 30 consecutive days without any content are reclaimed, so resources go to people who actually use them.
 
-## How do I register a domain name?
+## Report abuse
 
-[Acceptable Use Policy](agreements/acceptable-use-policy.md) | 
-[Privacy Policy](agreements/privacy-policy.md) | 
-[Registration And Use Agreement](agreements/registration-and-use-agreement-sokg.md) | 
-[Reserved Words List](reserved_words.txt)
-1. Clone the repository:
-```bash
-git clone https://github.com/PublicFreeSuffix/PublicFreeSuffix.git
-```
-Create a new branch for your own domain name:
-```bash
-git checkout main
-git pull origin main
-git checkout -b yourdomain.no.kg-request-1
-```
-Before performing any PR (Pull Request) operation—whether it's registering, updating, or deleting a domain's Whois file—you should always switch back to the main branch and sync the latest changes to your local environment.
-Afterward, create a new branch following the specified branch naming convention. Save your changes, and then create a new PR from this new branch.
-The branch naming convention should always adapt to the specific operation count, using the format: `yourdomain.no.kg-request-{a_number_here}`.
+If you find a domain being used for phishing, fraud, gambling, malware, or anything else that violates the Acceptable Use Policy, please tell us:
 
-2. Choose avaliable domain name, and create a new whois file into `./whois/{your-new-domain-name}.json` folder:
-```json
-{
-  "registrant": "your-own-example@gmail.com",
-  "domain": "mynewdomain",
-  "sld": "no.kg",
-  "nameservers": [
-    "nameserver1.example.com",
-    "nameserver2.example.com",
-    "nameserver3.example.com",
-    "nameserver4.example.com"
-  ],
-  "agree_to_agreements": {
-    "registration_and_use_agreement": true,
-    "acceptable_use_policy": true,
-    "privacy_policy": true
-  }
-}
-```
-- `registrant`: The email address of the domain owner.
-- `domain`: The domain name without the top-level domain (e.g., "mynewdomain"), domain length must more than 3 chars.
-- `sld`: The suffix you want to register (e.g., "no.kg" or one of SLD in list before).
-- `nameservers`: A list of DNS servers responsible for resolving the domain, 2 - 4 servers are allowed.
-- `agree_to_agreements`: A boolean value indicating whether the user has agreed to the registration and use agreement, acceptable use policy, and privacy policy.
-- The name of this file must be `{your-new-domain-name}.json`, like `mynewdomain.no.kg.json` here.
+- Online: [linux.tg/report](https://linux.tg/report)
+- Email: [abuse-report@publicfreesuffix.org](mailto:abuse-report@publicfreesuffix.org)
 
-> **Notice** In order to improve utilization and prevent hoarding of registrations and waste of resources, your registered domain name will be revoked if it is detected that no website content has been deployed within 30 consecutive days.
+## Where did the pull-request flow go?
 
-3. Create a pull request with your new domain name and whois file, your PR descriptions should format in [PR Description Template](.github/pull_request_template.md), and the title should format in:
-```text
-Registration/Update/Remove: {your-new-domain-name}.{sld}
-```
-A single Pull Request is only allowed to submit one domain name registration request.
+Between 2025 and 2026, registrations were handled through pull requests in this repository. That flow has been retired — the web console is faster and friendlier for everyone. If you applied through a pull request in the past, sign in to [LINUX.TG](https://linux.tg) with your original Whois email address and your domain will be waiting for you.
 
-4. Complete the registrant email verification according to [Automated Registrant Authorization via Email(ARAE)](AUTHORIZATION.md) description.
-
-5. After the domain is set up, you can use it for your website or other purposes.
-
-## How do I update my domain's NS / registrant email?
-It's easy, just modify your whois file and create a new pull request, and then complete the registrant email verification again.
-
-[<img title="Report domain abuse" src="https://i.postimg.cc/Xq7VHpLs/rebuse-log.png" height="35px" />](https://forms.gle/cXkxrKbdoeBsKBQdA)
+Questions, ideas, or just want to say hi? Post on [LINUX.TG](https://linux.tg) with the **#PFS** tag — we read everything.
