@@ -67,6 +67,12 @@ class ValidationOrchestrator {
             resultManager.addError(
               `Unsupported sTLD: the domain "${baseName}" does not use any currently supported suffix. Supported suffixes are: ${supportedSLDs.join(", ")}`,
             );
+          } else if (domain.includes(".")) {
+            // Multi-level name (e.g. "name.ai.no.kg"): only a single label under
+            // the sTLD is a registrable domain
+            resultManager.addError(
+              `Unsupported domain: "${domain}.${sld}" is a multi-level domain. Only a single label under the sTLD is allowed (e.g. "name.${sld}").`,
+            );
           } else {
             resultManager.setDetail("domainName", domain);
             resultManager.setDetail("sld", sld);
