@@ -126,7 +126,7 @@ class ValidationOrchestrator {
         }
       }
 
-      const report = reportGenerator.generateTransitionReport(
+      const report = await reportGenerator.generateTransitionReport(
         resultManager.getResult(),
         prData.author,
       );

@@ -184,7 +184,9 @@ jobs:
           );
           
           // Only use the report from validation result, don't add extra information
-          const commentBody = validationResult.report;
+          const commentBody = typeof validationResult.report === 'string' && validationResult.report
+            ? validationResult.report
+            : '❌ PR Validation Failed\n\nInternal error occurred during validation.';
           console.log('Generated comment body:', commentBody);
           
           // Delete all existing validation comments except the most recent one
