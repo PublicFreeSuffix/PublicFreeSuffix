@@ -8,7 +8,7 @@ Applications are handled entirely through the LINUX.TG web console — no pull r
 
 1. **Add your domain at a supported DNS provider.** Our top pick is [Bunny.net DNS](https://bunny.net/dns/), followed by [He.net DNS](https://dns.he.net/). Other providers work too.
 2. **Register on [LINUX.TG](https://linux.tg)** and verify your GitHub account. Your GitHub account must be at least 2 years old.
-3. **Apply in the [web console](https://linux.tg/domains).** Nameserver delegation is handled automatically, and you can manage or renew your domains there anytime.
+3. **Apply in the [web console](https://linux.tg/domains).** Nameserver delegation is handled automatically, and you can manage your domains there anytime.
 
 ## Supported suffixes
 
