@@ -18,7 +18,7 @@
 
 1.3. **Retention of Ownership and Revocability.** You retain ownership of Your Domain as governed by your registrar and the applicable registry. However, **the operation of Your Domain as a registrable suffix under the Program is a revocable service privilege granted by us, not a property right, and it may be suspended, restricted, or terminated by us at any time for any reason in accordance with this Onboarding Agreement.**
 
-1.4. The BYOS program is provided free of charge at the time of onboarding as published in the onboarding interface. Any community points (TGC) involved in related services are community points of the Nssnap Community platform, are not money, and are non-refundable under any circumstances.
+1.4. Submitting an onboarding application incurs a one-time application fee in community points, at the amount published in the onboarding interface (currently 2,500 points). **The fee is automatically refunded to your account if the application is not approved**, including rejection in review, expiry of the verification window, or withdrawal before approval; the fee is consumed once the application is approved. Any community points (TGC) involved in related services are community points of the Nssnap Community platform, are not money, and are non-refundable except where this Onboarding Agreement explicitly provides for a refund.
 
 **2. Eligibility Requirements**
 
