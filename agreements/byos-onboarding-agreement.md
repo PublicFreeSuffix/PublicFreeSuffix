@@ -42,7 +42,7 @@
 
 **4. Your Suffix Controls**
 
-4.1. As the Suffix Owner, you may configure the Suffix through the Service interface, within the limits published there, including the visibility mode (Shared or Private), the minimum and maximum registrable label length for the Suffix (within the technical limit of 63 bytes per label), a per-user registration quota or an unlimited quota, and the switch to enable or pause new registrations for the Suffix.
+4.1. As the Suffix Owner, you may configure the Suffix through the Service interface, within the limits published there, including the visibility mode (Shared or Private), the minimum and maximum registrable label length for the Suffix (within the technical limit of 63 bytes per label), a per-user registration quota or an unlimited quota, the registration price for the Suffix within the limits published by the Service, and the switch to enable or pause new registrations for the Suffix. You agree to keep the Suffix contact information accurate, including the managing organization homepage and contact email address published on the registration page.
 
 4.2. **Platform Priority.** We may disable registration for any Suffix for abuse prevention, legal compliance, or operational reasons. **A platform-side disable takes priority over your settings, and it cannot be lifted from your side.**
 

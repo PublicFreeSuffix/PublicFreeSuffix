@@ -36,7 +36,7 @@
 
 **4. Fees**
 
-4.1. Fees for sub-domain registration under a Suffix, if any, are shown at the time of registration in the form of community points (TGC). **TGC are community points of the Nssnap Community platform, are not money, and are non-refundable under any circumstances.** Some registrations may be free, as shown at the time of registration. Pricing of a Suffix is set by the Service and may change, and changed prices apply to new registrations as published.
+4.1. Fees for sub-domain registration under a Suffix, if any, are shown at the time of registration in the form of community points (TGC). **TGC are community points of the Nssnap Community platform, are not money, and are non-refundable under any circumstances.** Some registrations may be free, as shown at the time of registration. Pricing of a Suffix is set by the Service or, for BYOS suffixes, by the Suffix Owner within the limits published by the Service, subject to the minimum price published by the Service, and may change, and changed prices apply to new registrations as published. The maximum registrable term for a sub-domain follows the limits published by the Service.
 
 4.2. A Suffix Owner registering a sub-domain under their own Private suffix may enjoy free registration as published in the interface. This benefit applies only to their own Private suffix and does not extend to any other suffix.
 
