@@ -27,7 +27,7 @@ Seven live zones. One label under any suffix, while names last.
 | `us.mw` | Compact and memorable, with plenty of good names still up for grabs |
 | `pfsdns.org` | The project home zone, operated on our own nameservers. Solid, boring, and dependable by design |
 
-The machine-readable suffix list, including offline zones, lives in [public_sld_list.json](public_sld_list.json).
+The machine-readable suffix list lives in [public_sld_list.json](public_sld_list.json).
 
 ## Bring Your Own Suffix (BYOS)
 
