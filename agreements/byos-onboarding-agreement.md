@@ -18,7 +18,7 @@
 
 1.3. **Retention of Ownership and Revocability.** You retain ownership of Your Domain as governed by your registrar and the applicable registry. However, **the operation of Your Domain as a registrable suffix under the Program is a revocable service privilege granted by us, not a property right, and it may be suspended, restricted, or terminated by us at any time for any reason in accordance with this Onboarding Agreement.**
 
-1.4. Submitting an onboarding application incurs a one-time application fee in community points, at the amount published in the onboarding interface (currently 2,500 points). **The fee is automatically refunded to your account if the application is not approved**, including rejection in review, expiry of the verification window, or withdrawal before approval; the fee is consumed once the application is approved. Any community points (TGC) involved in related services are community points of the Nssnap Community platform, are not money, and are non-refundable except where this Onboarding Agreement explicitly provides for a refund.
+1.4. Submitting an onboarding application incurs a one-time application fee in community points, at the amount published in the onboarding interface (currently 2,500 points). **The fee is automatically refunded to your account if the application is not approved**, including rejection in review, expiry of the verification window, or withdrawal before approval; the fee is consumed once the application is approved. Any community points (TGC) involved in related services are community points of the SEUS Community platform, are not money, and are non-refundable except where this Onboarding Agreement explicitly provides for a refund.
 
 **2. Eligibility Requirements**
 
@@ -28,7 +28,7 @@
 
 2.3. **Domain Validity.** Your Domain must have a remaining validity of not less than two years at the time it enters review, as further described in Section 7.
 
-2.4. **Uniqueness and Conflicts.** One domain may exist in the BYOS program only once. If Your Domain is already being onboarded or has been onboarded by another account, or already exists as a suffix of the Service, your application will be refused. If you believe you have a legitimate claim to a domain that has been onboarded by another account, please contact us through the Meta Board of the Nssnap Community forum.
+2.4. **Uniqueness and Conflicts.** One domain may exist in the BYOS program only once. If Your Domain is already being onboarded or has been onboarded by another account, or already exists as a suffix of the Service, your application will be refused. If you believe you have a legitimate claim to a domain that has been onboarded by another account, please contact us through the Meta Board of the SEUS Community forum.
 
 **3. Application, Delegation and Review**
 
