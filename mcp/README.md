@@ -189,6 +189,34 @@ A second SEUS app is only useful when you want separate revocation control, a di
 
 To revoke access, disconnect the connector in your client and revoke the SEUS application grant from your SEUS account settings.
 
+### Callback URLs to register on the SEUS app
+
+Every callback below lives on the one shared SEUS application, so register them once. Cloud and web callbacks are fixed by each vendor and verified against their published client metadata documents. Local loopback callbacks depend on how SEUS validates redirect URIs. Once SEUS ignores the port on loopback callbacks per RFC 8252, any local client works as long as one loopback URI with the same path is registered, so the table groups them by path.
+
+Cloud and web callbacks to register exactly:
+
+| Client | Callback URL |
+|---|---|
+| Cursor web and Cloud Agents | `https://www.cursor.com/agents/mcp/oauth/callback` |
+| Claude on the web, Desktop, and mobile custom connectors | `https://claude.ai/api/mcp/auth_callback` |
+| Claude (newer claude.com domain) | `https://claude.com/api/mcp/auth_callback` |
+| ChatGPT Apps and Connectors | `https://chatgpt.com/connector_platform_oauth_redirect` |
+| VS Code on the web | `https://vscode.dev/redirect` |
+| Gemini Enterprise cloud agents | `https://vertexaisearch.cloud.google.com/oauth-redirect` |
+
+Local loopback callbacks to register as path anchors. The port is ignored once SEUS applies the RFC 8252 rule, so one entry per path covers every client that uses the same path:
+
+| Client | Callback URL | Path shared with |
+|---|---|---|
+| Cursor desktop | `http://localhost:8787/callback` | Claude Code, Codex CLI, mcp-remote, ChatGPT Codex (`/callback`) |
+| Codex CLI (portless form) | `http://127.0.0.1/callback` and `http://localhost/callback` | same `/callback` path |
+| Windsurf desktop | `http://127.0.0.1:8765/auth/callback` | Windsurf uses this fixed port (`/auth/callback`) |
+| VS Code desktop | `http://127.0.0.1:33418/` | VS Code fixed port, keep the trailing slash |
+| Gemini CLI (pinned) | `http://localhost:7777/oauth/callback` | Gemini CLI default is a random port (`/oauth/callback`) |
+| MCP Inspector (testing) | `http://localhost:6274/oauth/callback` and `http://localhost:6274/oauth/callback/debug` | useful for verifying the setup |
+
+Two caveats from the same client metadata documents. ChatGPT, Codex, and VS Code identify themselves through Client ID Metadata Documents, which SEUS does not advertise yet. VS Code additionally declares the device-code grant in its metadata, so it may fall back to a flow SEUS supports. Codex and ChatGPT also accept a manually entered client ID in their connection forms, which works with the shared SEUS client ID. Test each of the three before promising support.
+
 ## Troubleshooting
 
 - **Connected but no tools appear.** Fully quit and restart the client, then start a new chat. Clients cache the tool list at startup.
