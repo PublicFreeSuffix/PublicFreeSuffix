@@ -1,0 +1,22 @@
+{
+  "name": "pfs-free-domains",
+  "version": "0.6.0",
+  "description": "Find and register free PFS domains, manage DNS and WHOIS, SSL certificates, and SEUS free hosting directly from your AI assistant.",
+  "author": {
+    "name": "Public Free Suffix"
+  },
+  "homepage": "https://publicfreesuffix.org/",
+  "repository": "https://github.com/PublicFreeSuffix/PublicFreeSuffix",
+  "license": "MIT",
+  "keywords": [
+    "domains",
+    "dns",
+    "whois",
+    "ssl",
+    "hosting",
+    "pfs",
+    "seus"
+  ],
+  "logo": "assets/logo.svg",
+  "mcpServers": "mcp.json"
+}

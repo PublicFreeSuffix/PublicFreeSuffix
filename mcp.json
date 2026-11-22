@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "pfs": {
+      "url": "https://s.eus/api/mcp/pfs"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="PFS Free Domains logo">
+  <title>PFS Free Domains</title>
+  <rect width="512" height="512" rx="96" fill="#085041"/>
+  <rect x="40" y="40" width="432" height="432" rx="72" fill="#E1F5EE"/>
+  <circle cx="256" cy="214" r="104" fill="none" stroke="#085041" stroke-width="20"/>
+  <path d="M152 214h208M256 110c-44 28-44 180 0 208s44-180 0-208z" fill="none" stroke="#085041" stroke-width="16"/>
+  <path d="M172 158h168M172 270h168" fill="none" stroke="#1D9E75" stroke-width="10"/>
+  <text x="256" y="392" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="bold" fill="#04342C" text-anchor="middle">PFS</text>
+</svg>
