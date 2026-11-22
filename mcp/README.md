@@ -166,6 +166,14 @@ For a client without a browser callback, such as some terminal tools, SEUS also 
 
 SEUS currently advertises authorization-code, refresh-token, and device-code grants with PKCE S256. Its discovery document does **not** advertise dynamic client registration, so create an OAuth application in your SEUS account to obtain a client ID (SEUS also supports the device-code grant). Clients that require a pre-registered client ID can use that ID; clients that support device-code sign-in can use the device flow. For Cursor's one-click install specifically, put the client ID in the `auth` block (see below) and register Cursor's callback URLs in the SEUS app. Do not put a bearer token in a fixed `Authorization` header to work around it.
 
+### One SEUS app serves every client
+
+The client ID belongs to the OAuth application you create in SEUS, not to a particular MCP client. Create one app and reuse its client ID everywhere. There is no per-client app registration to do.
+
+Browser clients with fixed callbacks, including Cursor, use the callback URLs registered on that same app. Clients with a device-code sign-in need no callback at all, so they work with the same client ID and no extra setup. Clients that can accept a pre-registered client ID use the same ID in their config. A client that only supports automatic client registration cannot use it because SEUS does not advertise a registration endpoint; use its static client ID option or device-code mode instead. The mcp-remote bridge supports both with `--static-oauth-client-info` and `--device-code`.
+
+A second SEUS app is only useful when you want separate revocation control, a different callback allowlist, or separate usage reporting.
+
 To revoke access, disconnect the connector in your client and revoke the SEUS application grant from your SEUS account settings.
 
 ## Troubleshooting
