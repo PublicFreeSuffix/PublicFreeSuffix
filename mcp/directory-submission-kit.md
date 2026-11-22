@@ -101,11 +101,58 @@ Automated checks → review. Tool schema changes are held until they pass; the l
 
 ## 3. Google — Connected Apps Platform (Gemini + Search)
 
-**Sign-up:** https://developers.google.com/connected-apps (preview waitlist; access opens in phases; early reporting suggests US developers first).
-**Console:** Google Connected Console → Create app → connection type **MCP server** → app details, MCP connection, testers → review → choose Search / Gemini app / both.
-**Cost:** free. Streamable HTTP + publicly trusted TLS required (s.eus qualifies).
+**Console:** https://connected.google.com (sign in with a Google account; the old waitlist has become a self-service console flow)
+**Docs:** https://developers.google.com/connected-apps
+**Cost:** free. Preview access is still phased, but the console flow below is the documented path.
+**Note (2026-11-22):** console pages need a Google login; everything below is pre-filled for paste-in.
 
-Action now: join the waitlist with the shared table values. Nothing else is possible until access opens.
+### Console steps → what to paste
+
+**Step 1 — Create app**
+- Connected app name: `PFS Free Domains` (used as the user's @-mention handle)
+- Category: pick the closest to Productivity/Tools — **cannot be changed later**, choose deliberately
+- Connection type: **MCP server** (irreversible)
+
+**Step 2 — App details**
+- Icon: `assets/logo-512.png` (512×512 PNG, ~8 KB, generated from the repo SVG)
+- Description (≤30 words): `Find and register free domains across seven public suffixes, then manage DNS records, WHOIS lookups, SSL certificates, and free hosting.`
+- Capabilities (≥3, one per line, no leading numbers):
+  - `Search available free domains across all supported suffixes`
+  - `Register a free domain and claim it instantly`
+  - `Manage DNS records for your registered domains`
+  - `Look up WHOIS and SSL certificate details for any domain`
+- Example prompts (≥3; at least 2 starting with @mention, at least 1 natural mention, no numbering, no quotes):
+  - `@PFS Free Domains search for available free domains under 10 characters ending in bg5.net`
+  - `@PFS Free Domains register the domain myproject.fs.kg and point its A record to 93.184.216.34`
+  - `Use PFS Free Domains to look up the WHOIS details for tun.re`
+  - `Ask PFS Free Domains to list my registered domains and their SSL certificate status`
+- Terms of Service URL: `https://publicfreesuffix.org/legal/registration-agreement/`
+- Policy URL: `https://publicfreesuffix.org/legal/privacy-policy/`
+- Website URL: `https://publicfreesuffix.org`
+
+**Step 3 — MCP endpoint + domain verification**
+- MCP server URL: `https://s.eus/api/mcp/pfs`
+- Domain verification: the console generates a `google-connected-apps.json` token — host it at `https://s.eus/.well-known/google-connected-apps`, must return HTTP 200 with no redirects. Paste the token to the SEUS operator when it appears.
+
+**Step 4 — Credentials (choose User-delegated / Authorization Code)**
+- Google recommends **CIMD or Dynamic Client Registration** — SEUS already supports CIMD, so the URL-type client path aligns; alternatively provide the pre-registered static client ID `nsc_KY87pj5df041ShWTuuN2R_ZR`
+- Redirect URIs allowlist: whatever Google's console shows (register them on the SEUS app when listed)
+
+**Step 5 — Test account (User-delegated only)**
+- Same reviewer test account as Claude/ChatGPT, **with 2FA disabled**, pre-filled with sample domains
+
+**Steps 6–9 — Tool sync, availability, testers, review**
+- Tool sync: sign in with a developer account that has access; tool snapshot locks at publish (new version = new snapshot)
+- Products: Gemini app and/or Search (AI Mode); region/language as desired
+- Testers: **@gmail.com accounts only**
+- Send for review in the Releases card → fix issues → publish when approved
+
+### Prerequisites spot-check (all pass)
+
+- Streamable HTTP + publicly trusted TLS on s.eus ✓
+- OAuth 2.1 ✓ (Google's MCP requirement)
+- Tool annotations (`title` + hints) — audit on SEUS side before Step 6, same as Claude/ChatGPT ✓ (pending)
+- Privacy policy + ToS at public URLs ✓
 
 ---
 
