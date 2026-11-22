@@ -1,0 +1,73 @@
+name: Publish PFS to MCP Registry
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: publish-pfs-mcp-registry
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.repository == 'PublicFreeSuffix/PublicFreeSuffix' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      MCP_PUBLISHER_VERSION: v1.8.11
+
+    steps:
+      - name: Check out registry metadata
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+
+      - name: Check the public MCP endpoint and OAuth discovery
+        shell: bash
+        run: |
+          set -euo pipefail
+          endpoint="$(jq -er '.remotes[0].url' server.json)"
+          headers="$(mktemp)"
+          status="$(curl --proto '=https' --silent --show-error --max-time 15 --dump-header "$headers" --output /dev/null --write-out '%{http_code}' \
+            --header 'Content-Type: application/json' --header 'Accept: application/json, text/event-stream' \
+            --data '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' "$endpoint")"
+          if [[ "$status" != 401 ]]; then
+            echo "Expected the deployed MCP endpoint to return an OAuth challenge, got HTTP $status." >&2
+            exit 1
+          fi
+          metadata_url="$(grep -i '^WWW-Authenticate:' "$headers" | sed -n 's/.*resource_metadata="\([^"]*\)".*/\1/p')"
+          if [[ "$metadata_url" != 'https://s.eus/api/oauth/.well-known/pfs-mcp-resource' ]]; then
+            echo 'The MCP challenge did not advertise the expected SEUS OAuth metadata.' >&2
+            exit 1
+          fi
+          curl --proto '=https' --fail --silent --show-error --max-time 15 "$metadata_url" \
+            | jq --exit-status --arg endpoint "$endpoint" '.resource == $endpoint and (.authorization_servers | index("https://s.eus") != null)'
+          curl --proto '=https' --fail --silent --show-error --max-time 15 'https://s.eus/.well-known/oauth-authorization-server' \
+            | jq --exit-status '(.code_challenge_methods_supported | index("S256") != null) and (.authorization_endpoint | startswith("https://s.eus/")) and (.token_endpoint | startswith("https://s.eus/"))'
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6
+
+      - name: Download and verify the registry publisher
+        shell: bash
+        run: |
+          set -euo pipefail
+          archive='mcp-publisher_linux_amd64.tar.gz'
+          base="https://github.com/modelcontextprotocol/registry/releases/download/$MCP_PUBLISHER_VERSION"
+          curl --fail --location --silent --show-error --output "$archive" "$base/$archive"
+          curl --fail --location --silent --show-error --output "$archive.sigstore.json" "$base/$archive.sigstore.json"
+          cosign verify-blob --bundle "$archive.sigstore.json" \
+            --certificate-identity "https://github.com/modelcontextprotocol/registry/.github/workflows/release.yml@refs/tags/$MCP_PUBLISHER_VERSION" \
+            --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' "$archive"
+          tar -xzf "$archive" mcp-publisher
+
+      - name: Publish to MCP Registry
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./mcp-publisher login github-oidc
+          ./mcp-publisher publish

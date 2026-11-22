@@ -13,6 +13,10 @@ Everything runs through the [domain console](https://s.eus/domains): no pull req
 3. **Register and resolve on SEUS DNS.** Claim the name and it lands on SEUS DNS, our global resolution service: A, AAAA, MX, NS, CAA, TXT, CNAME, ALIAS, HTTPS, and more, all managed in the same console. No third-party DNS setup, nothing to delegate.
 4. **Deploy and keep it alive.** Point the name at something real: a blog, a project page, or anything in between. Domains left empty for 30 consecutive days are reclaimed, so names go to people who actually use them.
 
+## MCP access
+
+[PFS Free Domains MCP](mcp/README.md) connects compatible AI clients to PFS and SEUS. The guide tracks the remote endpoint and registry listing.
+
 ## Supported suffixes
 
 Seven live zones. One label under any suffix, while names last.
