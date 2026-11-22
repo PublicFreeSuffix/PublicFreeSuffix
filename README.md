@@ -15,7 +15,70 @@ Everything runs through the [domain console](https://s.eus/domains): no pull req
 
 ## MCP access
 
-[PFS Free Domains MCP](mcp/README.md) connects compatible AI clients to PFS and SEUS. The guide has the remote endpoint, the official Registry listing, and copy-paste install steps for Claude, Claude Code, Cursor, VS Code, Cline, Windsurf, and ChatGPT. The [Cursor Plugin package](https://github.com/PublicFreeSuffix/pfs-cursor-plugin) is published in a separate repository.
+[PFS Free Domains MCP](mcp/README.md) connects compatible AI clients to PFS and SEUS: domain availability, registration, DNS management, WHOIS, SSL certificates, and SEUS free hosting. The essentials are right here; the linked guide has full details, more clients, and troubleshooting.
+
+**Connection.** Remote **Streamable HTTP** server at `https://s.eus/api/mcp/pfs` (full URL, no query string, no trailing slash). No local process, package, or API key is needed. Listed in the official MCP Registry as `io.github.PublicFreeSuffix/free-domains`.
+
+**Authentication.** SEUS OAuth (authorization code with PKCE S256; a device-code flow is available for terminal clients). There is no API key: the client probes the endpoint, your browser opens the SEUS sign-in page, and you approve the request once. Tokens are stored and renewed by the client, so you normally sign in only once. Never put a bearer token in a fixed `Authorization` header — it blocks the OAuth flow.
+
+**Supported scopes.** `domains:read`, `domains:write`, `dns:read`, `dns:write`, `ssl:read`, `ssl:write`, `hosting:read`, `hosting:write`. The endpoint advertises this list itself through OAuth protected resource metadata, so compliant clients request the right scopes automatically; stdio-only CLIs and bridges can pin them via static OAuth client metadata. Read-only questions such as availability checks and WHOIS work with the read scopes; registration and DNS changes need the matching write scopes.
+
+### Quick install
+
+**Claude (web and Desktop):** **Customize > Connectors > Add > Add custom connector**, name it `PFS Free Domains`, enter `https://s.eus/api/mcp/pfs`, keep the detected OAuth settings, then **Connect** and sign in with SEUS. Free accounts can add one custom connector.
+
+**Claude Code:**
+
+```bash
+claude mcp add --transport http pfs https://s.eus/api/mcp/pfs
+```
+
+Then run `/mcp`, select `pfs`, choose **Authenticate**, and approve the sign-in. Add `--scope user` to use it in every project.
+
+**Cursor:** prefer the one-click [Cursor Plugin](https://github.com/PublicFreeSuffix/pfs-cursor-plugin) (**Customize > Plugins > Install from GitHub**). For manual setup in `~/.cursor/mcp.json` (all projects) or `.cursor/mcp.json` (this project), the shared public client ID is required because SEUS does not auto-register OAuth clients:
+
+```json
+{
+  "mcpServers": {
+    "pfs": {
+      "url": "https://s.eus/api/mcp/pfs",
+      "auth": {
+        "CLIENT_ID": "nsc_KY87pj5df041ShWTuuN2R_ZR"
+      }
+    }
+  }
+}
+```
+
+**VS Code (1.101+):** **Chat: Open Customizations > MCP Servers > Add Server**, choose HTTP, paste the URL; the first tool call opens the browser for SEUS sign-in. Or add to a workspace `.mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "pfs": {
+      "type": "http",
+      "url": "https://s.eus/api/mcp/pfs"
+    }
+  }
+}
+```
+
+**ChatGPT:** **Plugins > + > Add custom MCP server**, enter the URL, set authentication to OAuth, and **Create as a plugin**; mention it with `@` in a conversation. Availability depends on plan and workspace permissions.
+
+**Any other client** that supports remote Streamable HTTP works with the same URL. For stdio-only clients, bridge through `mcp-remote`; if sign-in fails with "the app is misconfigured", switch to device-code mode with the shared client ID:
+
+```json
+{
+  "mcpServers": {
+    "pfs": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://s.eus/api/mcp/pfs", "--device-code", "--static-oauth-client-info", "{\"client_id\":\"nsc_KY87pj5df041ShWTuuN2R_ZR\"}"]
+    }
+  }
+}
+```
+
+Chinese clients: Cherry Studio, Doubao, and other desktop clients with loopback callbacks connect directly; CodeBuddy, Tongyi Lingma, Trae, and Qoder go through the `mcp-remote` device-code bridge. See the [full guide](mcp/README.md) for per-client steps, callback URLs, and [troubleshooting](mcp/README.md#troubleshooting). If tools do not appear after connecting, restart the client and start a new chat.
 
 ## Supported suffixes
 

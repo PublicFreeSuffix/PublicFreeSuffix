@@ -167,6 +167,27 @@ SEUS matches callbacks exactly and currently rejects unregistered loopback ports
 
 There is no API key to copy. The first request returns a `401` challenge pointing to SEUS protected resource metadata; the client then opens `https://s.eus/oauth/authorize` for sign-in and uses PKCE with S256. Scopes advertised for this resource are `domains:read`, `domains:write`, `dns:read`, `dns:write`, `ssl:read`, `ssl:write`, `hosting:read`, and `hosting:write`. Read-only questions such as availability checks and WHOIS work with the read scopes; registration and DNS changes need the matching write scopes.
 
+### How a client decides which scopes to send
+
+Clients never guess the scope list; the endpoint advertises it. The first unauthenticated request returns a `401` challenge pointing to the protected resource metadata (RFC 9728), and that document carries `scopes_supported` — the eight scopes above — plus the SEUS authorization server. From there behavior splits three ways:
+
+- **Spec-compliant clients** (Claude, Claude Code, VS Code, Cursor, ChatGPT, MCP Inspector) read `scopes_supported` and include them, or a subset, in the authorization request. The SEUS consent screen shows exactly what was requested, so what you approve is what the client asked for.
+- **Clients that omit the `scope` parameter** get whatever SEUS grants by default, typically the read scopes. Read-only tools then work, but every write tool fails with `403 insufficient_scope` — the response header names the missing scope. Disconnect and reconnect, and approve the write scopes on the consent screen.
+- **CLIs and bridges with no scope UI** can pin the requested scopes through static OAuth client metadata (the RFC 7591 `scope` field). With `mcp-remote`:
+
+```json
+{
+  "mcpServers": {
+    "pfs": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://s.eus/api/mcp/pfs", "--device-code", "--static-oauth-client-info", "{\"client_id\":\"nsc_KY87pj5df041ShWTuuN2R_ZR\"}", "--static-oauth-client-metadata", "{\"scope\":\"domains:read dns:read dns:write hosting:read\"}"]
+    }
+  }
+}
+```
+
+Scope strings are space-separated. Request the narrowest set the client actually needs: `domains:read` alone covers availability checks and WHOIS; add a `write` scope only when the client will register names, edit DNS, issue certificates, or manage hosting. Tokens are refreshed with the originally granted scopes, so widening later means a fresh sign-in.
+
 ### What you see when you authorize
 
 Authorization takes two steps on your side: click **Connect** (or install the plugin), then sign in to SEUS and approve the request in the browser that opens. You never copy a key, token, or client ID into the client.
