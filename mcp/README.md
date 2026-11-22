@@ -66,6 +66,21 @@ Add this to `~/.cursor/mcp.json` (all projects) or `.cursor/mcp.json` (this proj
 
 Restart Cursor, enable `pfs` under **Customize > MCPs**, and complete the SEUS sign-in when prompted. Do not add an `Authorization` header: this server uses OAuth, and a fixed header prevents the sign-in flow.
 
+If SEUS does not auto-register the client, create an OAuth application in your SEUS account and add its client ID to the `auth` block. Register both Cursor callbacks in that SEUS app: `https://www.cursor.com/agents/mcp/oauth/callback` (web and Agents) and `http://localhost:8787/callback` (desktop).
+
+```json
+{
+  "mcpServers": {
+    "pfs": {
+      "url": "https://s.eus/api/mcp/pfs",
+      "auth": {
+        "CLIENT_ID": "your-seus-oauth-client-id"
+      }
+    }
+  }
+}
+```
+
 ### VS Code with GitHub Copilot
 
 Requires VS Code 1.101 or later for remote MCP and OAuth. Open **Chat: Open Customizations > MCP Servers > Add Server**, choose HTTP, and paste the URL. The first tool call opens the browser for SEUS sign-in.
@@ -147,7 +162,7 @@ Any client that supports remote MCP over Streamable HTTP can connect with the sa
 
 There is no API key to copy. The first request returns a `401` challenge pointing to SEUS protected resource metadata; the client then opens `https://s.eus/oauth/authorize` for sign-in and uses PKCE with S256. Scopes advertised for this resource are `domains:read`, `domains:write`, `dns:read`, `dns:write`, `ssl:read`, `ssl:write`, `hosting:read`, and `hosting:write`. Read-only questions such as availability checks and WHOIS work with the read scopes; registration and DNS changes need the matching write scopes.
 
-SEUS currently advertises authorization-code, refresh-token, and device-code grants with PKCE S256. Its discovery document does **not** advertise dynamic client registration or Client ID Metadata Documents. A client that requires either of those may stop with an error such as "does not support dynamic client registration" or complain about a missing client ID. In that case, use a client that accepts a pre-registered client ID or device-code sign-in, or ask SEUS for a client configuration. Do not put a bearer token in a fixed `Authorization` header to work around it.
+SEUS currently advertises authorization-code, refresh-token, and device-code grants with PKCE S256. Its discovery document does **not** advertise dynamic client registration, so create an OAuth application in your SEUS account to obtain a client ID (SEUS also supports the device-code grant). Clients that require a pre-registered client ID can use that ID; clients that support device-code sign-in can use the device flow. For Cursor's one-click install specifically, put the client ID in the `auth` block (see below) and register Cursor's callback URLs in the SEUS app. Do not put a bearer token in a fixed `Authorization` header to work around it.
 
 To revoke access, disconnect the connector in your client and revoke the SEUS application grant from your SEUS account settings.
 
