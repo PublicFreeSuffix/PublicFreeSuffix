@@ -152,6 +152,16 @@ Any client that supports remote MCP over Streamable HTTP can connect with the sa
 
 There is no API key to copy. The first request returns a `401` challenge pointing to SEUS protected resource metadata; the client then opens `https://s.eus/oauth/authorize` for sign-in and uses PKCE with S256. Scopes advertised for this resource are `domains:read`, `domains:write`, `dns:read`, `dns:write`, `ssl:read`, `ssl:write`, `hosting:read`, and `hosting:write`. Read-only questions such as availability checks and WHOIS work with the read scopes; registration and DNS changes need the matching write scopes.
 
+### What you see when you authorize
+
+Authorization takes two steps on your side: click **Connect** (or install the plugin), then sign in to SEUS and approve the request in the browser that opens. You never copy a key, token, or client ID into the client.
+
+Everything else happens automatically. The client probes the endpoint, follows the `401` challenge to the SEUS metadata, opens your browser at the authorization URL with a public client ID and a fresh PKCE challenge, and receives a short-lived code on a registered callback. It exchanges that code for tokens using PKCE — no client secret is involved — then reconnects with the access token and the tools appear.
+
+The grant is persistent. The client stores the tokens securely and renews them automatically, so you normally sign in only once. You will be asked again if you disconnect and reconnect, if you revoke the grant, or if you switch to a client that does not reuse stored tokens.
+
+For a client without a browser callback, such as some terminal tools, SEUS also offers the device-code grant: the client shows a short code and a verification URL, you enter the code there, and the flow completes the same way.
+
 SEUS currently advertises authorization-code, refresh-token, and device-code grants with PKCE S256. Its discovery document does **not** advertise dynamic client registration, so create an OAuth application in your SEUS account to obtain a client ID (SEUS also supports the device-code grant). Clients that require a pre-registered client ID can use that ID; clients that support device-code sign-in can use the device flow. For Cursor's one-click install specifically, put the client ID in the `auth` block (see below) and register Cursor's callback URLs in the SEUS app. Do not put a bearer token in a fixed `Authorization` header to work around it.
 
 To revoke access, disconnect the connector in your client and revoke the SEUS application grant from your SEUS account settings.
