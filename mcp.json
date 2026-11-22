@@ -1,7 +1,10 @@
 {
   "mcpServers": {
     "pfs": {
-      "url": "https://s.eus/api/mcp/pfs"
+      "url": "https://s.eus/api/mcp/pfs",
+      "auth": {
+        "CLIENT_ID": "nsc_pBkFDUTYEOHAOZNmtw9Upagy"
+      }
     }
   }
 }

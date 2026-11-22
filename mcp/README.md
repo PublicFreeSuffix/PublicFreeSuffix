@@ -58,28 +58,18 @@ Add this to `~/.cursor/mcp.json` (all projects) or `.cursor/mcp.json` (this proj
 {
   "mcpServers": {
     "pfs": {
-      "url": "https://s.eus/api/mcp/pfs"
-    }
-  }
-}
-```
-
-Restart Cursor, enable `pfs` under **Customize > MCPs**, and complete the SEUS sign-in when prompted. Do not add an `Authorization` header: this server uses OAuth, and a fixed header prevents the sign-in flow.
-
-If SEUS does not auto-register the client, create an OAuth application in your SEUS account and add its client ID to the `auth` block. Register both Cursor callbacks in that SEUS app: `https://www.cursor.com/agents/mcp/oauth/callback` (web and Agents) and `http://localhost:8787/callback` (desktop).
-
-```json
-{
-  "mcpServers": {
-    "pfs": {
       "url": "https://s.eus/api/mcp/pfs",
       "auth": {
-        "CLIENT_ID": "your-seus-oauth-client-id"
+        "CLIENT_ID": "nsc_pBkFDUTYEOHAOZNmtw9Upagy"
       }
     }
   }
 }
 ```
+
+SEUS does not auto-register OAuth clients, so the shared public client ID is required in the `auth` block. It is registered for both Cursor callbacks: `https://www.cursor.com/agents/mcp/oauth/callback` (web and Agents) and `http://localhost:8787/callback` (desktop). The client ID is public and safe to commit; no client secret is needed.
+
+Restart Cursor, enable `pfs` under **Customize > MCPs**, and complete the SEUS sign-in when prompted. Do not add an `Authorization` header: a fixed header prevents the OAuth sign-in flow.
 
 ### VS Code with GitHub Copilot
 
