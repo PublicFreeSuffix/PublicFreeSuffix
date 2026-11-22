@@ -134,3 +134,21 @@ Priority: low for a consumer/free-domain tool. Revisit if enterprise demand appe
 2. **ChatGPT plugin** — biggest audience, heaviest prep (verification, ZIP, video, test cases).
 3. **Google waitlist** — one form now, review later.
 4. Grok/Mistral docs pages — write "Connect to X" guides so custom-connector users can self-serve.
+
+---
+
+## Submitted (tracker)
+
+| Directory | Date | Status | Reference |
+|---|---|---|---|
+| Official MCP Registry | 2026-11 | published | `io.github.PublicFreeSuffix/free-domains` v0.6.1 |
+| Cursor Marketplace | 2026-11 | published | repo `PublicFreeSuffix/pfs-cursor-plugin` |
+| GitHub MCP Registry onboarding | 2026-11-22 | requested | discussion #1257 comment + email to partnerships@github.com |
+| mcpservers.org | 2026-11-22 | in review (~2 weeks) | email notification |
+| awesome-remote-mcp-servers (jaw9c) | 2026-11-22 | PR open | PR #2667 |
+| Docker MCP Catalog | 2026-11-22 | PR open, awaiting Docker review | docker/mcp-registry#7539 (`servers/pfs-free-domains/`) |
+
+### Docker follow-up
+
+- CI runs only after a Docker maintainer approves the workflow run (first-time contributor) — expected, no action.
+- The PR process asks for test credentials via https://forms.gle/6Lw3nsvu2d6nFg8e6 once review starts. Provision the same reviewer test account planned for Claude/ChatGPT and submit it there when Docker requests it.
