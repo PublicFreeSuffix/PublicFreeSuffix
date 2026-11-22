@@ -196,6 +196,7 @@ Priority: low for a consumer/free-domain tool. Revisit if enterprise demand appe
 | mcpservers.org | 2026-11-22 | in review (~2 weeks) | email notification |
 | Docker MCP Catalog | 2026-11-22 | PR open, awaiting Docker review | docker/mcp-registry#7539 |
 | Google Connected Apps | 2026-11-22 | **deferred** | $25 one-time Play developer registration required by console; materials pre-filled in section 3 |
+| awesome-remote-mcp-servers (sylviangth) | 2026-11-22 | PR open | sylviangth/awesome-remote-mcp-servers#354 (Search & Data Extraction section) |
 | ModelScope MCP 广场 | 2026-11-22 | **skipped** | no auto-sync from official registry; domestic clients already covered via mcp-remote bridge; revisit if CN distribution becomes a priority |
 | awesome-remote-mcp-servers (jaw9c) | 2026-11-22 | PR open | PR #2667 |
 | Docker MCP Catalog | 2026-11-22 | PR open, awaiting Docker review | docker/mcp-registry#7539 (`servers/pfs-free-domains/`) |
