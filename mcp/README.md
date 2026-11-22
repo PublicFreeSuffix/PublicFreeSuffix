@@ -191,7 +191,7 @@ To revoke access, disconnect the connector in your client and revoke the SEUS ap
 
 ### Callback URLs to register on the SEUS app
 
-Every callback below lives on the one shared SEUS application, so register them once. Cloud and web callbacks are fixed by each vendor and verified against their published client metadata documents. Local loopback callbacks depend on how SEUS validates redirect URIs. Once SEUS ignores the port on loopback callbacks per RFC 8252, any local client works as long as one loopback URI with the same path is registered, so the table groups them by path.
+Every callback below lives on the one shared SEUS application, so register them once. Cloud and web callbacks are fixed by each vendor and verified against their published client metadata documents. SEUS now ignores the port on loopback callbacks per RFC 8252 (verified against every path variant in November 2026), so any local desktop client works without registering its callback at all. The loopback table below is kept only as a reference for which path each client uses.
 
 Cloud and web callbacks to register exactly:
 
@@ -204,7 +204,7 @@ Cloud and web callbacks to register exactly:
 | VS Code on the web | `https://vscode.dev/redirect` |
 | Gemini Enterprise cloud agents | `https://vertexaisearch.cloud.google.com/oauth-redirect` |
 
-Local loopback callbacks to register as path anchors. The port is ignored once SEUS applies the RFC 8252 rule, so one entry per path covers every client that uses the same path:
+Local loopback callbacks (reference only, no registration needed since SEUS ignores the port per RFC 8252):
 
 | Client | Callback URL | Path shared with |
 |---|---|---|
@@ -227,13 +227,13 @@ Chinese clients need no new cloud callback either. Verified against their public
 
 In short: local desktop clients among these rely on loopback callbacks your RFC 8252 rule already covers, and the rest connect through `mcp-remote` with the device flow, which needs no callback at all.
 
-Two caveats from the same client metadata documents. ChatGPT, Codex, and VS Code identify themselves through Client ID Metadata Documents, which SEUS does not advertise yet. VS Code additionally declares the device-code grant in its metadata, so it may fall back to a flow SEUS supports. Codex and ChatGPT also accept a manually entered client ID in their connection forms, which works with the shared SEUS client ID. Test each of the three before promising support.
+Client metadata document notes (verified end to end in November 2026). SEUS advertises `client_id_metadata_document_supported: true`, so ChatGPT, Codex, and VS Code connect fully automatically: they carry their own client metadata document URL as the client ID, and SEUS fetches and validates it, including the scope allowlist (requested scopes must be a subset of the document's space-separated `scope` field). The server must be able to fetch those documents over the public internet; clients whose documents sit on unreachable hosts will fail with a fetch error. Codex and ChatGPT also accept a manually entered client ID in their connection forms as a fallback, which works with the shared SEUS client ID.
 
 ## Troubleshooting
 
 - **Connected but no tools appear.** Fully quit and restart the client, then start a new chat. Clients cache the tool list at startup.
 - **No sign-in prompt, or a 401 loop.** Check that the URL is exactly `https://s.eus/api/mcp/pfs`, uses HTTPS, and has no `Authorization` header.
-- **"The app is misconfigured" in a non-Cursor client.** SEUS rejects unregistered loopback ports. Use the `mcp-remote` device-code configuration under [Other clients](#other-clients).
+- **"The app is misconfigured" or "cannot fetch the client metadata document".** For cloud clients, SEUS must be able to fetch the client's metadata document URL over the public internet (GitHub raw URLs, for example, are unreachable from some networks; a CDN mirror works). For local clients, confirm the redirect URI uses a loopback host; any port and path is accepted.
 - **403 with `insufficient_scope`.** Disconnect and reconnect, then approve the write scopes you actually need.
 - **Cline cannot connect.** Confirm `"type": "streamableHttp"` is present; otherwise Cline uses legacy SSE.
 - **Claude reports the server is unreachable.** Claude connects from its own cloud, so the endpoint must be public. Check the [SEUS MCP documentation](https://s.eus/docs/integrations/mcp) for service status.
