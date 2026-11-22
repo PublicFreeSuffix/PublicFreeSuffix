@@ -1,7 +1,7 @@
 {
   "name": "pfs-free-domains",
   "version": "0.6.0",
-  "description": "Find and register free PFS domains, manage DNS and WHOIS, SSL certificates, and SEUS free hosting directly from your AI assistant.",
+  "description": "Search and register free domains, manage DNS, WHOIS and SSL certificates, and deploy to SEUS free hosting — all from your AI assistant.",
   "author": {
     "name": "Public Free Suffix"
   },
