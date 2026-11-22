@@ -101,7 +101,7 @@ Automated checks → review. Tool schema changes are held until they pass; the l
 
 ## 3. Google — Connected Apps Platform (Gemini + Search)
 
-**Console:** https://connected.google.com (sign in with a Google account; the old waitlist has become a self-service console flow)
+**Console:** https://connected.google.com/console/developers (the bare root 404s — always enter via this path or the "申请试用预览版" button on developers.google.com/connected-apps). Sign-in page is Play-Console-branded — normal, the Connected Console shares Google's console infrastructure. No Play Developer account or fee required (confirmed in official prerequisites); preview access is still phased, so first login may show an access-request state instead of the console.
 **Docs:** https://developers.google.com/connected-apps
 **Cost:** free. Preview access is still phased, but the console flow below is the documented path.
 **Note (2026-11-22):** console pages need a Google login; everything below is pre-filled for paste-in.
@@ -150,7 +150,9 @@ Automated checks → review. Tool schema changes are held until they pass; the l
 ### Prerequisites spot-check (all pass)
 
 - Streamable HTTP + publicly trusted TLS on s.eus ✓
+- Single global endpoint (Google does not support per-region URLs) ✓
 - OAuth 2.1 ✓ (Google's MCP requirement)
+- IP allowlist: only needed if s.eus restricts source IPs — if so, whitelist Google's fetcher ranges listed at developers.google.com/connected-apps/gpc/prerequisites (108.177.64.0/20, 142.250.88.0/22, 172.217.80.0/20, 192.178.20.0/22, 192.179.0.0/20, 74.125.232.0/24, 136.121.40.0/21)
 - Tool annotations (`title` + hints) — audit on SEUS side before Step 6, same as Claude/ChatGPT ✓ (pending)
 - Privacy policy + ToS at public URLs ✓
 
