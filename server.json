@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.publicfreesuffix/free-domains",
+  "title": "PFS Free Domains",
+  "description": "Find and register free PFS domains, manage DNS, check WHOIS, and manage certificates and hosting.",
+  "repository": {
+    "url": "https://github.com/PublicFreeSuffix/PublicFreeSuffix",
+    "source": "github"
+  },
+  "websiteUrl": "https://publicfreesuffix.org/",
+  "version": "0.6.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://s.eus/api/mcp/pfs"
+    }
+  ]
+}
