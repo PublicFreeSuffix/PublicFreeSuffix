@@ -150,6 +150,19 @@ Any client that supports remote MCP over Streamable HTTP can connect with the sa
 }
 ```
 
+SEUS matches callbacks exactly and currently rejects unregistered loopback ports, including the random local ports many desktop clients pick. If sign-in stops with "the app is misconfigured", run the bridge in device-code mode with the shared client ID instead:
+
+```json
+{
+  "mcpServers": {
+    "pfs": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://s.eus/api/mcp/pfs", "--device-code", "--static-oauth-client-info", "{\"client_id\":\"nsc_pBkFDUTYEOHAOZNmtw9Upagy\"}"]
+    }
+  }
+}
+```
+
 ## OAuth and permissions
 
 There is no API key to copy. The first request returns a `401` challenge pointing to SEUS protected resource metadata; the client then opens `https://s.eus/oauth/authorize` for sign-in and uses PKCE with S256. Scopes advertised for this resource are `domains:read`, `domains:write`, `dns:read`, `dns:write`, `ssl:read`, `ssl:write`, `hosting:read`, and `hosting:write`. Read-only questions such as availability checks and WHOIS work with the read scopes; registration and DNS changes need the matching write scopes.
@@ -180,6 +193,7 @@ To revoke access, disconnect the connector in your client and revoke the SEUS ap
 
 - **Connected but no tools appear.** Fully quit and restart the client, then start a new chat. Clients cache the tool list at startup.
 - **No sign-in prompt, or a 401 loop.** Check that the URL is exactly `https://s.eus/api/mcp/pfs`, uses HTTPS, and has no `Authorization` header.
+- **"The app is misconfigured" in a non-Cursor client.** SEUS rejects unregistered loopback ports. Use the `mcp-remote` device-code configuration under [Other clients](#other-clients).
 - **403 with `insufficient_scope`.** Disconnect and reconnect, then approve the write scopes you actually need.
 - **Cline cannot connect.** Confirm `"type": "streamableHttp"` is present; otherwise Cline uses legacy SSE.
 - **Claude reports the server is unreachable.** Claude connects from its own cloud, so the endpoint must be public. Check the [SEUS MCP documentation](https://s.eus/docs/integrations/mcp) for service status.
