@@ -60,7 +60,7 @@ Add this to `~/.cursor/mcp.json` (all projects) or `.cursor/mcp.json` (this proj
     "pfs": {
       "url": "https://s.eus/api/mcp/pfs",
       "auth": {
-        "CLIENT_ID": "nsc_pBkFDUTYEOHAOZNmtw9Upagy"
+        "CLIENT_ID": "nsc_KY87pj5df041ShWTuuN2R_ZR"
       }
     }
   }
@@ -69,7 +69,7 @@ Add this to `~/.cursor/mcp.json` (all projects) or `.cursor/mcp.json` (this proj
 
 Prefer the one-click install from the [Cursor Plugin repository](https://github.com/PublicFreeSuffix/pfs-cursor-plugin): open its link in Cursor via **Customize > Plugins > Install from GitHub**. The plugin already carries the endpoint and client ID, so no manual JSON is needed.
 
-SEUS does not auto-register OAuth clients, so the Cursor-specific public client ID is required in the `auth` block. It is registered for both Cursor callbacks: `https://www.cursor.com/agents/mcp/oauth/callback` (web and Agents) and `http://localhost:8787/callback` (desktop). The client ID is public and safe to commit; no client secret is needed. Clients other than Cursor use the device-code flow with the shared client ID shown later on this page.
+SEUS does not auto-register OAuth clients, so the shared public client ID is required in the `auth` block. This is the same client ID every client uses. It is registered for both Cursor callbacks: `https://www.cursor.com/agents/mcp/oauth/callback` (web and Agents) and `http://localhost:8787/callback` (desktop). The client ID is public and safe to commit; no client secret is needed. Clients other than Cursor can use the same ID with the device-code flow or a registered callback.
 
 Restart Cursor, enable `pfs` under **Customize > MCPs**, and complete the SEUS sign-in when prompted. Do not add an `Authorization` header: a fixed header prevents the OAuth sign-in flow.
 
