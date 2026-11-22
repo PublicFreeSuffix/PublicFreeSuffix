@@ -200,6 +200,18 @@ Priority: low for a consumer/free-domain tool. Revisit if enterprise demand appe
 | ModelScope MCP 广场 | 2026-11-22 | **skipped** | no auto-sync from official registry; domestic clients already covered via mcp-remote bridge; revisit if CN distribution becomes a priority |
 | awesome-remote-mcp-servers (jaw9c) | 2026-11-22 | PR open | PR #2667 |
 | Docker MCP Catalog | 2026-11-22 | PR open, awaiting Docker review | docker/mcp-registry#7539 (`servers/pfs-free-domains/`) |
+| Awesome-MCP-ZH (yzfly) | 2026-11-22 | PR open | yzfly/Awesome-MCP-ZH#1140 (其他实用工具与集成, 中文社区 7.8k★) |
+| Awesome-MCP-Servers (YuzeHao2023) | 2026-11-22 | PR open | YuzeHao2023/Awesome-MCP-Servers#969 (Cloud Platforms, 1.1k★) |
+| awesome-mcp-list (MobinX) | 2026-11-22 | PR open | MobinX/awesome-mcp-list#1424 (Cloud Platforms, 917★, 严格 CONTRIBUTING 模板) |
+| awesome-mcp-servers (TensorBlock) | 2026-11-22 | PR open | TensorBlock/awesome-mcp-servers#6615 (docs/cloud-platforms--services.md, 1.1k★, 有 MCP Index API) |
+| awesome-mcp-servers (appcypher) | 2026-11-22 | **blocked** | repo archived (read-only), 5.8k★ but frozen since 2026-05 |
+| awesome-mcp-servers (wong2) | 2026-11-22 | **blocked** | repo has Pull Requests disabled in settings (GET /pulls → 404), 4.4k★ |
+| awesome-remote-mcp-servers (punkpeye) | 2026-11-22 | **pending Glama** | requires Glama connector badge; wait for glama.ai auto-sync from official registry, then submit with 🔐 OAuth marker + `https://s.eus/api/mcp/pfs` |
+
+### Submission hygiene (2026-11-22)
+
+- Before every submission: search the target repo README + issues/PRs for `PublicFreeSuffix` / `free domains` / `s.eus`, and confirm no prior PRs from our account (search API). All four 2026-11-22 awesome-list PRs passed these checks.
+- Leftover forks (harmless, delete manually if desired): `PublicFreeSuffix/appcypher-awesome-mcp-servers`, `PublicFreeSuffix/wong2-awesome-mcp-servers`.
 
 ### Docker follow-up
 
