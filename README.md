@@ -15,7 +15,7 @@ Everything runs through the [domain console](https://s.eus/domains): no pull req
 
 ## MCP access
 
-[PFS Free Domains MCP](mcp/README.md) connects compatible AI clients to PFS and SEUS. The guide tracks the remote endpoint and registry listing.
+[PFS Free Domains MCP](mcp/README.md) connects compatible AI clients to PFS and SEUS. The guide has the remote endpoint, the official Registry listing, and copy-paste install steps for Claude, Claude Code, Cursor, VS Code, Cline, Windsurf, and ChatGPT.
 
 ## Supported suffixes
 
