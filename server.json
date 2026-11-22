@@ -1,6 +1,6 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.publicfreesuffix/free-domains",
+  "name": "io.github.PublicFreeSuffix/free-domains",
   "title": "PFS Free Domains",
   "description": "Find and register free PFS domains, manage DNS, check WHOIS, and manage certificates and hosting.",
   "repository": {

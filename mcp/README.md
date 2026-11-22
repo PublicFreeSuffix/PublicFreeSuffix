@@ -9,7 +9,7 @@ Use the Public Free Suffix service from an MCP client that supports remote Strea
 | Transport | Streamable HTTP |
 | URL | `https://s.eus/api/mcp/pfs` |
 | Authentication | SEUS OAuth |
-| Registry name | `io.github.publicfreesuffix/free-domains` |
+| Registry name | `io.github.PublicFreeSuffix/free-domains` |
 
 The URL is the planned public endpoint. Once deployed, add it in your MCP client and follow the SEUS sign-in prompt. An MCP Registry listing helps clients discover the endpoint. The client still needs to support SEUS OAuth for account operations.
 
