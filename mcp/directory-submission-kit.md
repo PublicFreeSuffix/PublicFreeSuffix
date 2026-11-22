@@ -101,7 +101,7 @@ Automated checks → review. Tool schema changes are held until they pass; the l
 
 ## 3. Google — Connected Apps Platform (Gemini + Search)
 
-**Console:** https://connected.google.com/console/developers (the bare root 404s — always enter via this path or the "申请试用预览版" button on developers.google.com/connected-apps). Sign-in page is Play-Console-branded — normal, the Connected Console shares Google's console infrastructure. No Play Developer account or fee required (confirmed in official prerequisites); preview access is still phased, so first login may show an access-request state instead of the console.
+**Console:** https://connected.google.com/console/developers (the bare root 404s — always enter via this path or the "申请试用预览版" button on developers.google.com/connected-apps). Sign-in page is Play-Console-branded — the Connected Console developer registration reuses the Play Console flow, which charges the standard **$25 one-time developer registration fee** (lifetime, no renewal; official prerequisites docs omit this). Preview access remains phased, so paying does not guarantee immediate console access. Decision (2026-11-22): **deferred** — revisit when Google opens the preview more broadly or Gemini distribution becomes a priority.
 **Docs:** https://developers.google.com/connected-apps
 **Cost:** free. Preview access is still phased, but the console flow below is the documented path.
 **Note (2026-11-22):** console pages need a Google login; everything below is pre-filled for paste-in.
@@ -181,8 +181,8 @@ Priority: low for a consumer/free-domain tool. Revisit if enterprise demand appe
 
 1. **Claude connector** — highest value, simplest flow, only needs a paid plan + the checklist above.
 2. **ChatGPT plugin** — biggest audience, heaviest prep (verification, ZIP, video, test cases).
-3. **Google waitlist** — one form now, review later.
-4. Grok/Mistral docs pages — write "Connect to X" guides so custom-connector users can self-serve.
+3. Grok/Mistral docs pages — write "Connect to X" guides so custom-connector users can self-serve.
+4. **Google Connected Apps** — deferred: console registration requires the $25 one-time Play developer fee and preview access is still phased. Materials above are complete; revisit when the preview opens more broadly.
 
 ---
 
@@ -194,6 +194,9 @@ Priority: low for a consumer/free-domain tool. Revisit if enterprise demand appe
 | Cursor Marketplace | 2026-11 | published | repo `PublicFreeSuffix/pfs-cursor-plugin` |
 | GitHub MCP Registry onboarding | 2026-11-22 | requested | discussion #1257 comment + email to partnerships@github.com |
 | mcpservers.org | 2026-11-22 | in review (~2 weeks) | email notification |
+| Docker MCP Catalog | 2026-11-22 | PR open, awaiting Docker review | docker/mcp-registry#7539 |
+| Google Connected Apps | 2026-11-22 | **deferred** | $25 one-time Play developer registration required by console; materials pre-filled in section 3 |
+| ModelScope MCP 广场 | 2026-11-22 | **skipped** | no auto-sync from official registry; domestic clients already covered via mcp-remote bridge; revisit if CN distribution becomes a priority |
 | awesome-remote-mcp-servers (jaw9c) | 2026-11-22 | PR open | PR #2667 |
 | Docker MCP Catalog | 2026-11-22 | PR open, awaiting Docker review | docker/mcp-registry#7539 (`servers/pfs-free-domains/`) |
 
