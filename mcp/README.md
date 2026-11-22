@@ -215,6 +215,18 @@ Local loopback callbacks to register as path anchors. The port is ignored once S
 | Gemini CLI (pinned) | `http://localhost:7777/oauth/callback` | Gemini CLI default is a random port (`/oauth/callback`) |
 | MCP Inspector (testing) | `http://localhost:6274/oauth/callback` and `http://localhost:6274/oauth/callback/debug` | useful for verifying the setup |
 
+Chinese clients need no new cloud callback either. Verified against their public docs in November 2026:
+
+- **Cherry Studio** runs a native OAuth flow for remote streamable HTTP servers and opens a loopback callback in a local browser window (default callback port 12346). Covered by the RFC 8252 loopback rule.
+- **Doubao desktop and DoubaoWork** accept remote MCP servers with OAuth and open a loopback callback on a random local port. Covered by the same rule.
+- **CodeBuddy** (IDE plugin and Codebuddy Code) does not support remote-URL OAuth yet; Tencent's own docs route users through the `npx mcp-remote` bridge, which pairs with the device-code flow.
+- **Tongyi Lingma** only supports STDIO servers, so it needs the `mcp-remote-alibaba-cloud` or `mcp-remote` bridge.
+- **Trae** supports remote streamable HTTP servers but publishes no native MCP OAuth sign-in; use the `mcp-remote` device-code bridge.
+- **Qoder** adds remote streamable HTTP servers directly, but its documented OAuth path is server-side for cloud agents, so local OAuth also goes through the device-code bridge.
+- **Kimi, DeepSeek, and Yuanbao** document no remote MCP OAuth support; token-based access or the device-code bridge applies.
+
+In short: local desktop clients among these rely on loopback callbacks your RFC 8252 rule already covers, and the rest connect through `mcp-remote` with the device flow, which needs no callback at all.
+
 Two caveats from the same client metadata documents. ChatGPT, Codex, and VS Code identify themselves through Client ID Metadata Documents, which SEUS does not advertise yet. VS Code additionally declares the device-code grant in its metadata, so it may fall back to a flow SEUS supports. Codex and ChatGPT also accept a manually entered client ID in their connection forms, which works with the shared SEUS client ID. Test each of the three before promising support.
 
 ## Troubleshooting
