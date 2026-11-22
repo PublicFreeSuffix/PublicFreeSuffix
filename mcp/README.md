@@ -60,7 +60,7 @@ Add this to `~/.cursor/mcp.json` (all projects) or `.cursor/mcp.json` (this proj
     "pfs": {
       "url": "https://s.eus/api/mcp/pfs",
       "auth": {
-        "CLIENT_ID": "nsc_pBkFDUTYEOHAOZNmtw9Upagy"
+        "CLIENT_ID": "nsc_KY87pj5df041ShWTuuN2R_ZR"
       }
     }
   }
@@ -157,7 +157,7 @@ SEUS matches callbacks exactly and currently rejects unregistered loopback ports
   "mcpServers": {
     "pfs": {
       "command": "npx",
-      "args": ["-y", "mcp-remote", "https://s.eus/api/mcp/pfs", "--device-code", "--static-oauth-client-info", "{\"client_id\":\"nsc_pBkFDUTYEOHAOZNmtw9Upagy\"}"]
+      "args": ["-y", "mcp-remote", "https://s.eus/api/mcp/pfs", "--device-code", "--static-oauth-client-info", "{\"client_id\":\"nsc_KY87pj5df041ShWTuuN2R_ZR\"}"]
     }
   }
 }
