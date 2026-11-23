@@ -1,0 +1,12 @@
+{
+  "identifier": "pfs-free-domains",
+  "name": "PFS Free Domains",
+  "version": "0.6.1",
+  "author": "PublicFreeSuffix",
+  "authorUrl": "https://github.com/PublicFreeSuffix",
+  "homepage": "https://publicfreesuffix.org",
+  "cloudEndpoint": "https://s.eus/api/mcp/pfs",
+  "description": "Find and register free domains across seven live public suffixes, then manage DNS records, WHOIS lookups, SSL certificates, and free hosting without leaving the conversation. Includes the SEUS community side: posts, feeds, media, and comments. Remote Streamable HTTP endpoint with SEUS OAuth 2.1 (PKCE) sign-in - no API key needed.",
+  "icon": "🌐",
+  "tags": ["domains", "dns", "ssl", "whois", "hosting", "free"]
+}
