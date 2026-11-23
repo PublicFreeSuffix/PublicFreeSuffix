@@ -1,6 +1,6 @@
 # PFS Free Domains MCP
 
-Use the Public Free Suffix service from an MCP client that supports remote Streamable HTTP and OAuth. The server provides PFS domain availability, registration, DNS management, WHOIS, SSL certificates, and SEUS free hosting.
+Use the Public Free Suffix service from an MCP client that supports remote Streamable HTTP and OAuth. The server provides PFS domain availability, registration, DNS management, WHOIS, SSL certificates, and SEUS free hosting, plus the SEUS community side: posts, feeds, media, and comments.
 
 ## Connection
 
@@ -165,11 +165,11 @@ SEUS matches callbacks exactly and currently rejects unregistered loopback ports
 
 ## OAuth and permissions
 
-There is no API key to copy. The first request returns a `401` challenge pointing to SEUS protected resource metadata; the client then opens `https://s.eus/oauth/authorize` for sign-in and uses PKCE with S256. Scopes advertised for this resource are `domains:read`, `domains:write`, `dns:read`, `dns:write`, `ssl:read`, `ssl:write`, `hosting:read`, and `hosting:write`. Read-only questions such as availability checks and WHOIS work with the read scopes; registration and DNS changes need the matching write scopes.
+There is no API key to copy. The first request returns a `401` challenge pointing to SEUS protected resource metadata; the client then opens `https://s.eus/oauth/authorize` for sign-in and uses PKCE with S256. Scopes advertised for this resource are fifteen. The domain stack is `domains:read`, `domains:write`, `dns:read`, `dns:write`, `ssl:read`, `ssl:write`, `hosting:read`, and `hosting:write`; the community stack is `posts:read`, `posts:write`, `feed:read`, `media:read`, `media:write`, `comments:read`, and `profile:read`. Read-only questions such as availability checks and WHOIS work with the read scopes; registration and DNS changes need the matching write scopes. On the community side, reading posts and feeds needs `posts:read` or `feed:read`, publishing needs `posts:write`, media needs the `media` scopes, and `comments:read` and `profile:read` cover comment visibility and account details.
 
 ### How a client decides which scopes to send
 
-Clients never guess the scope list; the endpoint advertises it. The first unauthenticated request returns a `401` challenge pointing to the protected resource metadata (RFC 9728), and that document carries `scopes_supported` — the eight scopes above — plus the SEUS authorization server. From there behavior splits three ways:
+Clients never guess the scope list; the endpoint advertises it. The first unauthenticated request returns a `401` challenge pointing to the protected resource metadata (RFC 9728), and that document carries `scopes_supported` — the fifteen scopes above — plus the SEUS authorization server. From there behavior splits three ways:
 
 - **Spec-compliant clients** (Claude, Claude Code, VS Code, Cursor, ChatGPT, MCP Inspector) read `scopes_supported` and include them, or a subset, in the authorization request. The SEUS consent screen shows exactly what was requested, so what you approve is what the client asked for.
 - **Clients that omit the `scope` parameter** get whatever SEUS grants by default, typically the read scopes. Read-only tools then work, but every write tool fails with `403 insufficient_scope` — the response header names the missing scope. Disconnect and reconnect, and approve the write scopes on the consent screen.
@@ -186,7 +186,7 @@ Clients never guess the scope list; the endpoint advertises it. The first unauth
 }
 ```
 
-Scope strings are space-separated. Request the narrowest set the client actually needs: `domains:read` alone covers availability checks and WHOIS; add a `write` scope only when the client will register names, edit DNS, issue certificates, or manage hosting. Tokens are refreshed with the originally granted scopes, so widening later means a fresh sign-in.
+Scope strings are space-separated. Request the narrowest set the client actually needs: `domains:read` alone covers availability checks and WHOIS; add a `write` scope only when the client will register names, edit DNS, issue certificates, or manage hosting; add `posts:read` and `feed:read` for community reading, and `posts:write` for publishing. Tokens are refreshed with the originally granted scopes, so widening later means a fresh sign-in.
 
 ### What you see when you authorize
 
