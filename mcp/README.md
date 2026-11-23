@@ -1,5 +1,7 @@
 # PFS Free Domains MCP
 
+[![PFS Free Domains MCP connector – tool definition quality and endpoint health on Glama](https://glama.ai/mcp/connectors/io.github.PublicFreeSuffix/free-domains/badges/score.svg)](https://glama.ai/mcp/connectors/io.github.PublicFreeSuffix/free-domains)
+
 Use the Public Free Suffix service from an MCP client that supports remote Streamable HTTP and OAuth. The server provides PFS domain availability, registration, DNS management, WHOIS, SSL certificates, and SEUS free hosting, plus the SEUS community side: posts, feeds, media, and comments.
 
 ## Connection
