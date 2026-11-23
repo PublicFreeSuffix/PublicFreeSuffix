@@ -3,12 +3,21 @@
   "name": "io.github.PublicFreeSuffix/free-domains",
   "title": "PFS Free Domains",
   "description": "Find and register free PFS domains, manage DNS, check WHOIS, and manage certificates and hosting.",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/PublicFreeSuffix/PublicFreeSuffix/main/assets/pfs-logo-mcp.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "488x488"
+      ]
+    }
+  ],
   "repository": {
     "url": "https://github.com/PublicFreeSuffix/PublicFreeSuffix",
     "source": "github"
   },
   "websiteUrl": "https://publicfreesuffix.org/",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "remotes": [
     {
       "type": "streamable-http",
