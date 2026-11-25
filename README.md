@@ -15,6 +15,8 @@ Everything runs through the [domain console](https://s.eus/domains): no pull req
 
 ## MCP access
 
+[![PFS Free Domains MCP connector](https://glama.ai/mcp/connectors/io.github.PublicFreeSuffix/free-domains/badges/score.svg)](https://glama.ai/mcp/connectors/io.github.PublicFreeSuffix/free-domains)
+
 [PFS Free Domains MCP](mcp/README.md) connects compatible AI clients to PFS and SEUS: domain availability, registration, DNS management, WHOIS, SSL certificates, SEUS free hosting, and the SEUS community side — posts, feeds, media, and comments. The essentials are right here; the linked guide has full details, more clients, and troubleshooting.
 
 **Connection.** Remote **Streamable HTTP** server at `https://s.eus/api/mcp/pfs` (full URL, no query string, no trailing slash). No local process, package, or API key is needed. Listed in the official MCP Registry as `io.github.PublicFreeSuffix/free-domains`.
